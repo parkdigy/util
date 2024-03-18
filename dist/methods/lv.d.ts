@@ -5,12 +5,10 @@
  * @param other - 기타 속성
  * @returns 생성된 객체
  * ******************************************************************************************************************/
-export type LV<L, V, Other extends object | undefined> = Other extends undefined ? {
-    label: L;
-    value: V;
-} : {
+export declare function lv<L, V, Other extends {
+    [key: string]: any;
+}>(label: L, value: V, other?: Other): {
     label: L;
     value: V;
 } & Other;
-export declare function lv<L, V, Other extends object | undefined, Result = LV<L, V, Other>>(label: L, value: V, other?: Other): Result;
 export default lv;
