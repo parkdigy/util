@@ -1,0 +1,56 @@
+/********************************************************************************************************************
+ * 일괄 마스킹
+ * @param data 데이터
+ * @param names 마스킹 처리 할 데이터 이름(key)
+ * @returns 마스킹 처리된 데이터
+ * ******************************************************************************************************************/
+
+import maskingName from './maskingName';
+import maskingEmail from './maskingEmail';
+import maskingTel from './maskingTel';
+import maskingCompanyNo from './maskingCompanyNo';
+import maskingPersonalNo from './maskingPersonalNo';
+
+export function maskingBatch<T extends { [k: string]: T }>(
+  data: T,
+  names: {
+    // 이름
+    name?: keyof T | (keyof T)[];
+    // 이메일
+    email?: keyof T | (keyof T)[];
+    // 전화번호
+    tel?: keyof T | (keyof T)[];
+    // 사업자등록번호
+    companyNo?: keyof T | (keyof T)[];
+    // 주민등록번호
+    personalNo?: keyof T | (keyof T)[];
+  }
+) {
+  const newData = { ...data };
+  const maskData = (key: keyof typeof names, maskFunc: (value: string) => string) => {
+    const name = names[key];
+    if (name) {
+      if (Array.isArray(name)) {
+        name.forEach((name) => {
+          if (newData[name] && typeof newData[name] === 'string') {
+            newData[name] = maskFunc(newData[name] as unknown as string) as unknown as T[typeof name];
+          }
+        });
+      } else {
+        if (newData[name] && typeof newData[name] === 'string') {
+          newData[name] = maskFunc(newData[name] as unknown as string) as unknown as T[typeof name];
+        }
+      }
+    }
+  };
+
+  if (names.name) maskData('name', maskingName);
+  if (names.email) maskData('email', maskingEmail);
+  if (names.tel) maskData('tel', maskingTel);
+  if (names.companyNo) maskData('companyNo', maskingCompanyNo);
+  if (names.personalNo) maskData('personalNo', maskingPersonalNo);
+
+  return newData;
+}
+
+export default maskingBatch;
