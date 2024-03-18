@@ -6,12 +6,16 @@
  * @returns 생성된 객체
  * ******************************************************************************************************************/
 
-export type VL<V, L, Other extends object> = { value: V; label: L } & Other;
+export type VL<V, L, Other extends object | undefined> = Other extends undefined
+  ? { value: V; label: L }
+  : { value: V; label: L } & Other;
 
-export function vl<V, L, Result = VL<V, L, NonNullable<unknown>>>(value: V, label: L): Result;
-export function vl<V, L, Other extends object, Result = VL<V, L, Other>>(value: V, label: L, other: Other): Result;
-export function vl(value: any, label: any, other?: object) {
-  return { value, label, ...other };
+export function vl<V, L, Other extends object | undefined, Result = VL<L, V, Other>>(
+  value: V,
+  label: L,
+  other?: Other
+): Result {
+  return { value, label, ...other } as Result;
 }
 
 export default vl;
