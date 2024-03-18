@@ -10,7 +10,7 @@ export type LV<L, V, Other extends object | undefined> = Other extends undefined
   ? { label: L; value: V }
   : { label: L; value: V } & Other;
 
-export function lv<L, V, Other extends object | undefined, Result = LV<V, L, Other>>(
+export function lv<L, V, Other extends object | undefined, Result = LV<L, V, Other>>(
   label: L,
   value: V,
   other?: Other
