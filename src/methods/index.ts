@@ -33,6 +33,7 @@ export * from './beginTime';
 export * from './endTime';
 export * from './formatDate';
 export * from './extractDate';
+export * from './weekDayText';
 
 /** korean */
 export * from './isKoreanSingleCharacter';

@@ -379,6 +379,28 @@ function extractDate(dt) {
         second: date.second(),
         millisecond: date.millisecond(),
     };
+}/********************************************************************************************************************
+ * weekDay 에 해당하는 요일을 한글로 반환하는 함수
+ * ******************************************************************************************************************/
+function weekDayText(weekDay) {
+    switch (weekDay) {
+        case 0:
+            return '일';
+        case 1:
+            return '월';
+        case 2:
+            return '화';
+        case 3:
+            return '수';
+        case 4:
+            return '목';
+        case 5:
+            return '금';
+        case 6:
+            return '토';
+        default:
+            return '';
+    }
 }function isKoreanSingleCharacter(text) {
     var strGa = 44032; // 가
     var strHih = 55203; // 힣
@@ -694,6 +716,7 @@ function uuid(removeDash) {
     endTime: endTime,
     format: formatDate,
     extract: extractDate,
+    weekDayText: weekDayText,
 };var delay = {
     nextTick: nextTick,
 };var id = {
@@ -739,4 +762,4 @@ function uuid(removeDash) {
     personalNo: personalNo,
     masking: masking,
     version: version,
-};export{PdgUtil,base64Decode,base64Encode,beginTime,companyNoAutoDash,contains,copy,PdgUtil as default,empty,endTime,equal,extractDate,formatDate,ifNotNull,ifNotNullAndUndefined,ifNotUndefined,ifNull,ifNullOrUndefined,ifUndefined,isCompanyNo,isContainsKorean,isEmail,isKoreanSingleCharacter,isMobile,isNumericOnlyText,isPersonalNo,isTel,isUrl,koreanAppendRo,koreanAppendRul,koreanRo,koreanRul,lv,maskingBatch,maskingCompanyNo,maskingEmail,maskingName,maskingPersonalNo,maskingTel,nextTick,notEmpty,now,nowJs,nowTime,numberFormat,personalNoAutoDash,telAutoDash,urlJoin,uuid,versionString,vl};
+};export{PdgUtil,base64Decode,base64Encode,beginTime,companyNoAutoDash,contains,copy,PdgUtil as default,empty,endTime,equal,extractDate,formatDate,ifNotNull,ifNotNullAndUndefined,ifNotUndefined,ifNull,ifNullOrUndefined,ifUndefined,isCompanyNo,isContainsKorean,isEmail,isKoreanSingleCharacter,isMobile,isNumericOnlyText,isPersonalNo,isTel,isUrl,koreanAppendRo,koreanAppendRul,koreanRo,koreanRul,lv,maskingBatch,maskingCompanyNo,maskingEmail,maskingName,maskingPersonalNo,maskingTel,nextTick,notEmpty,now,nowJs,nowTime,numberFormat,personalNoAutoDash,telAutoDash,urlJoin,uuid,versionString,vl,weekDayText};
