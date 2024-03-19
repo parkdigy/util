@@ -5,7 +5,7 @@
  * @returns 마스킹 처리된 데이터
  * ******************************************************************************************************************/
 export declare function maskingBatch<T extends {
-    [k: string]: T;
+    [k: string]: any;
 }>(data: T, names: {
     name?: keyof T | (keyof T)[];
     email?: keyof T | (keyof T)[];

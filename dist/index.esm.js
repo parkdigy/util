@@ -179,36 +179,26 @@ function nextTick(callback, delay) {
  * 날짜의 시간을 00:00:00.0 으로 변경해서 반환
  * ******************************************************************************************************************/
 function beginTime(dt) {
-    if (dt instanceof Date) {
+    if (dt === undefined || dt instanceof Date) {
         var newDt = dt ? new Date(dt) : new Date();
         newDt.setHours(0, 0, 0, 0);
         return newDt;
     }
     else {
-        var newDt = dayjs(dt);
-        newDt.set('hour', 0);
-        newDt.set('minute', 0);
-        newDt.set('second', 0);
-        newDt.set('millisecond', 0);
-        return newDt;
+        return dayjs(dt).set('hour', 0).set('minutes', 0).set('second', 0).set('millisecond', 0);
     }
 }/********************************************************************************************************************
  * 날짜의 시간을 23:59:59 로 변경해서 반환
  * ******************************************************************************************************************/
 function endTime(dt, millisecond) {
     if (millisecond === void 0) { millisecond = 0; }
-    if (dt instanceof Date) {
+    if (dt === undefined || dt instanceof Date) {
         var newDt = dt ? new Date(dt) : new Date();
         newDt.setHours(23, 59, 59, millisecond);
         return newDt;
     }
     else {
-        var newDt = dayjs(dt);
-        newDt.set('hour', 23);
-        newDt.set('minute', 59);
-        newDt.set('second', 59);
-        newDt.set('millisecond', millisecond);
-        return newDt;
+        return dayjs(dt).set('hour', 23).set('minutes', 59).set('second', 59).set('millisecond', millisecond);
     }
 }/********************************************************************************************************************
  * 날짜를 주어진 형식의 텍스트로 변환

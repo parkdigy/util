@@ -26,7 +26,7 @@ export * from './extractDate';
 
 /** korean */
 export * from './isKoreanSingleCharacter';
-export * from './koreaRo';
+export * from './koreanRo';
 export * from './koreanAppendRo';
 export * from './koreanRul';
 export * from './koreanAppendRul';

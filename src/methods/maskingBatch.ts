@@ -11,7 +11,7 @@ import maskingTel from './maskingTel';
 import maskingCompanyNo from './maskingCompanyNo';
 import maskingPersonalNo from './maskingPersonalNo';
 
-export function maskingBatch<T extends { [k: string]: T }>(
+export function maskingBatch<T extends { [k: string]: any }>(
   data: T,
   names: {
     // 이름

@@ -4,18 +4,15 @@
 
 import dayjs, { Dayjs } from 'dayjs';
 
-export function beginTime<T extends Date | Dayjs>(dt?: T): T {
-  if (dt instanceof Date) {
+export function beginTime(): Date;
+export function beginTime<T extends Date | Dayjs>(dt: T): T;
+export function beginTime(dt?: Date | Dayjs) {
+  if (dt === undefined || dt instanceof Date) {
     const newDt = dt ? new Date(dt) : new Date();
     newDt.setHours(0, 0, 0, 0);
-    return newDt as T;
+    return newDt;
   } else {
-    const newDt = dayjs(dt);
-    newDt.set('hour', 0);
-    newDt.set('minute', 0);
-    newDt.set('second', 0);
-    newDt.set('millisecond', 0);
-    return newDt as T;
+    return dayjs(dt).set('hour', 0).set('minutes', 0).set('second', 0).set('millisecond', 0);
   }
 }
 

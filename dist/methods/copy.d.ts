@@ -4,3 +4,4 @@
  * @returns 복사된 객체
  * ******************************************************************************************************************/
 export declare function copy<T extends object>(value: T): T;
+export default copy;

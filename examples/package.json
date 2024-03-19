@@ -1,7 +1,7 @@
 {
   "name": "examples",
   "scripts": {
-    "test": "tsx src/test.ts",
+    "dev": "tsx src/example.ts",
     "reinstall-module": "rm -rf node_modules && rm -f package-lock.json && npm i"
   },
   "devDependencies": {
