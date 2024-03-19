@@ -2,14 +2,14 @@
  * 전화번호 마스킹
  * ******************************************************************************************************************/
 
-import telAutoDash from './telAutoDash';
+import telNoAutoDash from './telNoAutoDash';
 import notEmpty from './notEmpty';
 
 export function maskingTel(tel: string) {
   let newTel = tel;
   if (notEmpty(tel)) {
     const authDash = tel.includes('-');
-    const mobileNums = telAutoDash(tel).split('-');
+    const mobileNums = telNoAutoDash(tel).split('-');
     switch (mobileNums.length) {
       case 1:
         mobileNums[0] = `${mobileNums[0].substring(0, 3)}${'*'.repeat(mobileNums[0].length - 3)}`;
@@ -20,7 +20,7 @@ export function maskingTel(tel: string) {
     }
     newTel = mobileNums.join('');
     if (authDash) {
-      newTel = telAutoDash(newTel);
+      newTel = telNoAutoDash(newTel);
     }
   }
   return newTel;

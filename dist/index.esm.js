@@ -131,7 +131,7 @@ function isEmail(v) {
  * @param v 전화번호
  * @returns 하이픈 추가된 전화번호
  * ******************************************************************************************************************/
-function telAutoDash(v) {
+function telNoAutoDash(v) {
     if (v === undefined)
         return undefined;
     if (v === null)
@@ -204,8 +204,8 @@ function telAutoDash(v) {
  * @param v 확인할 값
  * @returns 휴대전화번호 형식이면 true, 그렇지 않으면 false 반환
  * ******************************************************************************************************************/
-function isMobile(v) {
-    return /(^(01(?:0|1|[6-9]))([0-9]{3,4})([0-9]{4,4})$)|(^(01(?:0|1|[6-9]))-([0-9]{3,4})-([0-9]{4,4})$)|(^\+(?:[-]?[0-9]){8,}$)/.test(telAutoDash(v));
+function isMobileNo(v) {
+    return /(^(01(?:0|1|[6-9]))([0-9]{3,4})([0-9]{4,4})$)|(^(01(?:0|1|[6-9]))-([0-9]{3,4})-([0-9]{4,4})$)|(^\+(?:[-]?[0-9]){8,}$)/.test(telNoAutoDash(v));
 }/********************************************************************************************************************
  * 문자열에 숫자만 포함되어 있는지 확인하는 함수
  * @param v 확인할 값
@@ -225,8 +225,8 @@ function isPersonalNo(v) {
  * @param v 확인할 값
  * @returns 전화번호 형식이면 true, 그렇지 않으면 false 반환
  * ******************************************************************************************************************/
-function isTel(v) {
-    return /(^([0-9]{2,3})([0-9]{3,4})([0-9]{4})$)|(^([0-9]{2,3})-([0-9]{3,4})-([0-9]{4})$)|(^([0-9]{4})-([0-9]{4})$)|(^\+(?:[-]?[0-9]){8,}$)/.test(telAutoDash(v));
+function isTelNo(v) {
+    return /(^([0-9]{2,3})([0-9]{3,4})([0-9]{4})$)|(^([0-9]{2,3})-([0-9]{3,4})-([0-9]{4})$)|(^([0-9]{4})-([0-9]{4})$)|(^\+(?:[-]?[0-9]){8,}$)/.test(telNoAutoDash(v));
 }/********************************************************************************************************************
  * URL 형식인지 확인하는 함수
  * @param v 확인할 값
@@ -553,7 +553,7 @@ function maskingTel(tel) {
     var newTel = tel;
     if (notEmpty(tel)) {
         var authDash = tel.includes('-');
-        var mobileNums = telAutoDash(tel).split('-');
+        var mobileNums = telNoAutoDash(tel).split('-');
         switch (mobileNums.length) {
             case 1:
                 mobileNums[0] = "".concat(mobileNums[0].substring(0, 3)).concat('*'.repeat(mobileNums[0].length - 3));
@@ -564,7 +564,7 @@ function maskingTel(tel) {
         }
         newTel = mobileNums.join('');
         if (authDash) {
-            newTel = telAutoDash(newTel);
+            newTel = telNoAutoDash(newTel);
         }
     }
     return newTel;
@@ -699,10 +699,10 @@ function uuid(removeDash) {
     ifNotNullAndUndefined: ifNotNullAndUndefined,
     isCompanyNo: isCompanyNo,
     isEmail: isEmail,
-    isMobile: isMobile,
+    isMobile: isMobileNo,
     isNumericOnlyText: isNumericOnlyText,
     isPersonalNo: isPersonalNo,
-    isTel: isTel,
+    isTel: isTelNo,
     isUrl: isUrl,
 };var data = {
     lv: lv,
@@ -730,8 +730,8 @@ function uuid(removeDash) {
     isContainsKorean: isContainsKorean,
 };var number = {
     format: numberFormat,
-};var tel = {
-    autoDash: telAutoDash,
+};var telNo = {
+    autoDash: telNoAutoDash,
 };var url = {
     join: urlJoin,
 };var companyNo = {
@@ -756,10 +756,10 @@ function uuid(removeDash) {
     id: id,
     korean: korean,
     number: number,
-    tel: tel,
     url: url,
-    companyNo: companyNo,
-    personalNo: personalNo,
     masking: masking,
     version: version,
-};export{PdgUtil,base64Decode,base64Encode,beginTime,companyNoAutoDash,contains,copy,PdgUtil as default,empty,endTime,equal,extractDate,formatDate,ifNotNull,ifNotNullAndUndefined,ifNotUndefined,ifNull,ifNullOrUndefined,ifUndefined,isCompanyNo,isContainsKorean,isEmail,isKoreanSingleCharacter,isMobile,isNumericOnlyText,isPersonalNo,isTel,isUrl,koreanAppendRo,koreanAppendRul,koreanRo,koreanRul,lv,maskingBatch,maskingCompanyNo,maskingEmail,maskingName,maskingPersonalNo,maskingTel,nextTick,notEmpty,now,nowJs,nowTime,numberFormat,personalNoAutoDash,telAutoDash,urlJoin,uuid,versionString,vl,weekdayText};
+    telNo: telNo,
+    companyNo: companyNo,
+    personalNo: personalNo,
+};export{PdgUtil,base64Decode,base64Encode,beginTime,companyNoAutoDash,contains,copy,PdgUtil as default,empty,endTime,equal,extractDate,formatDate,ifNotNull,ifNotNullAndUndefined,ifNotUndefined,ifNull,ifNullOrUndefined,ifUndefined,isCompanyNo,isContainsKorean,isEmail,isKoreanSingleCharacter,isMobileNo,isNumericOnlyText,isPersonalNo,isTelNo,isUrl,koreanAppendRo,koreanAppendRul,koreanRo,koreanRul,lv,maskingBatch,maskingCompanyNo,maskingEmail,maskingName,maskingPersonalNo,maskingTel,nextTick,notEmpty,now,nowJs,nowTime,numberFormat,personalNoAutoDash,telNoAutoDash,urlJoin,uuid,versionString,vl,weekdayText};

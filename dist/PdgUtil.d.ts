@@ -16,10 +16,10 @@ export declare const PdgUtil: {
         ifNotNullAndUndefined: typeof import("./methods").ifNotNullAndUndefined;
         isCompanyNo: typeof import("./methods").isCompanyNo;
         isEmail: typeof import("./methods").isEmail;
-        isMobile: typeof import("./methods").isMobile;
+        isMobile: typeof import("./methods").isMobileNo;
         isNumericOnlyText: typeof import("./methods").isNumericOnlyText;
         isPersonalNo: typeof import("./methods").isPersonalNo;
-        isTel: typeof import("./methods").isTel;
+        isTel: typeof import("./methods").isTelNo;
         isUrl: typeof import("./methods").isUrl;
     };
     data: {
@@ -54,17 +54,8 @@ export declare const PdgUtil: {
     number: {
         format: typeof import("./methods").numberFormat;
     };
-    tel: {
-        autoDash: typeof import("./methods").telAutoDash;
-    };
     url: {
         join: typeof import("./methods").urlJoin;
-    };
-    companyNo: {
-        autoDash: typeof import("./methods").companyNoAutoDash;
-    };
-    personalNo: {
-        autoDash: typeof import("./methods").personalNoAutoDash;
     };
     masking: {
         batch: typeof import("./methods").maskingBatch;
@@ -76,6 +67,15 @@ export declare const PdgUtil: {
     };
     version: {
         toString: typeof import("./methods").versionString;
+    };
+    telNo: {
+        autoDash: typeof import("./methods").telNoAutoDash;
+    };
+    companyNo: {
+        autoDash: typeof import("./methods").companyNoAutoDash;
+    };
+    personalNo: {
+        autoDash: typeof import("./methods").personalNoAutoDash;
     };
 };
 export default PdgUtil;

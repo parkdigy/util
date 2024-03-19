@@ -1,4 +1,4 @@
-import { empty, notEmpty, equal, contains, ifNull, ifNotNull, ifUndefined, ifNotUndefined, ifNullOrUndefined, ifNotNullAndUndefined, isCompanyNo, isEmail, isMobile, isNumericOnlyText, isPersonalNo, isTel, isUrl } from './methods';
+import { empty, notEmpty, equal, contains, ifNull, ifNotNull, ifUndefined, ifNotUndefined, ifNullOrUndefined, ifNotNullAndUndefined, isCompanyNo, isEmail, isMobileNo, isNumericOnlyText, isPersonalNo, isTelNo, isUrl } from './methods';
 export declare const compare: {
     empty: typeof empty;
     notEmpty: typeof notEmpty;
@@ -12,10 +12,10 @@ export declare const compare: {
     ifNotNullAndUndefined: typeof ifNotNullAndUndefined;
     isCompanyNo: typeof isCompanyNo;
     isEmail: typeof isEmail;
-    isMobile: typeof isMobile;
+    isMobile: typeof isMobileNo;
     isNumericOnlyText: typeof isNumericOnlyText;
     isPersonalNo: typeof isPersonalNo;
-    isTel: typeof isTel;
+    isTel: typeof isTelNo;
     isUrl: typeof isUrl;
 };
 export default compare;

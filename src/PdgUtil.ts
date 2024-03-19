@@ -6,7 +6,7 @@ import delay from './delay';
 import id from './id';
 import korean from './korean';
 import number from './number';
-import tel from './tel';
+import telNo from './telNo';
 import url from './url';
 import companyNo from './companyNo';
 import personalNo from './personalNo';
@@ -22,12 +22,12 @@ export const PdgUtil = {
   id,
   korean,
   number,
-  tel,
   url,
-  companyNo,
-  personalNo,
   masking,
   version,
+  telNo,
+  companyNo,
+  personalNo,
 };
 
 export default PdgUtil;

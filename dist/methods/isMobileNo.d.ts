@@ -3,5 +3,5 @@
  * @param v 확인할 값
  * @returns 휴대전화번호 형식이면 true, 그렇지 않으면 false 반환
  * ******************************************************************************************************************/
-export declare function isMobile(v: string): boolean;
-export default isMobile;
+export declare function isMobileNo(v: string): boolean;
+export default isMobileNo;

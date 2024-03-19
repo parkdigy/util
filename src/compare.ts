@@ -11,10 +11,10 @@ import {
   ifNotNullAndUndefined,
   isCompanyNo,
   isEmail,
-  isMobile,
+  isMobileNo,
   isNumericOnlyText,
   isPersonalNo,
-  isTel,
+  isTelNo,
   isUrl,
 } from './methods';
 
@@ -31,10 +31,10 @@ export const compare = {
   ifNotNullAndUndefined,
   isCompanyNo,
   isEmail,
-  isMobile,
+  isMobile: isMobileNo,
   isNumericOnlyText,
   isPersonalNo,
-  isTel,
+  isTel: isTelNo,
   isUrl,
 };
 

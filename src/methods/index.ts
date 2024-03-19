@@ -11,10 +11,10 @@ export * from './ifNullOrUndefined';
 export * from './ifNotNullAndUndefined';
 export * from './isCompanyNo';
 export * from './isEmail';
-export * from './isMobile';
+export * from './isMobileNo';
 export * from './isNumericOnlyText';
 export * from './isPersonalNo';
-export * from './isTel';
+export * from './isTelNo';
 export * from './isUrl';
 
 /** data */
@@ -47,7 +47,7 @@ export * from './isContainsKorean';
 export * from './numberFormat';
 
 /** tel */
-export * from './telAutoDash';
+export * from './telNoAutoDash';
 
 /** url */
 export * from './urlJoin';

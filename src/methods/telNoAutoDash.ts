@@ -4,7 +4,7 @@
  * @returns 하이픈 추가된 전화번호
  * ******************************************************************************************************************/
 
-export function telAutoDash<
+export function telNoAutoDash<
   T extends string | null | undefined,
   RT = T extends null ? null : T extends undefined ? undefined : string,
 >(v: T): RT {
@@ -75,4 +75,4 @@ export function telAutoDash<
   return tmp as RT;
 }
 
-export default telAutoDash;
+export default telNoAutoDash;

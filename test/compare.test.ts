@@ -7,8 +7,8 @@ import ifUndefined from '../src/methods/ifUndefined';
 import ifNullOrUndefined from '../src/methods/ifNullOrUndefined';
 import isEmail from '../src/methods/isEmail';
 import isUrl from '../src/methods/isUrl';
-import isTel from '../src/methods/isTel';
-import isMobile from '../src/methods/isMobile';
+import isTelNo from '../src/methods/isTelNo';
+import isMobileNo from '../src/methods/isMobileNo';
 import isPersonalNo from '../src/methods/isPersonalNo';
 import isCompanyNo from '../src/methods/isCompanyNo';
 import isNumericOnlyText from '../src/methods/isNumericOnlyText';
@@ -139,45 +139,45 @@ describe('isUrl', () => {
   });
 });
 
-describe('isTel', () => {
+describe('isTelNo', () => {
   it('should return true if the string is a valid telephone number', () => {
-    expect(isTel('01012345678')).toBe(true);
-    expect(isTel('02-1234-5678')).toBe(true);
-    expect(isTel('02-123-4567')).toBe(true);
-    expect(isTel('+821012345678')).toBe(true);
+    expect(isTelNo('01012345678')).toBe(true);
+    expect(isTelNo('02-1234-5678')).toBe(true);
+    expect(isTelNo('02-123-4567')).toBe(true);
+    expect(isTelNo('+821012345678')).toBe(true);
   });
 
   it('should return false if the string is not a valid telephone number', () => {
-    expect(isTel('12345678')).toBe(false);
-    expect(isTel('02-123456')).toBe(false);
+    expect(isTelNo('12345678')).toBe(false);
+    expect(isTelNo('02-123456')).toBe(false);
   });
 });
 
-describe('isMobile', () => {
+describe('isMobileNo', () => {
   it('should return true if the string is a valid mobile number', () => {
-    expect(isMobile('01012345678')).toBe(true);
-    expect(isMobile('01112345678')).toBe(true);
-    expect(isMobile('01612345678')).toBe(true);
-    expect(isMobile('01812345678')).toBe(true);
-    expect(isMobile('01912345678')).toBe(true);
-    expect(isMobile('010-1234-5678')).toBe(true);
-    expect(isMobile('011-1234-5678')).toBe(true);
-    expect(isMobile('016-1234-5678')).toBe(true);
-    expect(isMobile('018-1234-5678')).toBe(true);
-    expect(isMobile('019-1234-5678')).toBe(true);
-    expect(isMobile('+821012345678')).toBe(true);
-    expect(isMobile('+821112345678')).toBe(true);
-    expect(isMobile('+821612345678')).toBe(true);
-    expect(isMobile('+821812345678')).toBe(true);
-    expect(isMobile('+821912345678')).toBe(true);
+    expect(isMobileNo('01012345678')).toBe(true);
+    expect(isMobileNo('01112345678')).toBe(true);
+    expect(isMobileNo('01612345678')).toBe(true);
+    expect(isMobileNo('01812345678')).toBe(true);
+    expect(isMobileNo('01912345678')).toBe(true);
+    expect(isMobileNo('010-1234-5678')).toBe(true);
+    expect(isMobileNo('011-1234-5678')).toBe(true);
+    expect(isMobileNo('016-1234-5678')).toBe(true);
+    expect(isMobileNo('018-1234-5678')).toBe(true);
+    expect(isMobileNo('019-1234-5678')).toBe(true);
+    expect(isMobileNo('+821012345678')).toBe(true);
+    expect(isMobileNo('+821112345678')).toBe(true);
+    expect(isMobileNo('+821612345678')).toBe(true);
+    expect(isMobileNo('+821812345678')).toBe(true);
+    expect(isMobileNo('+821912345678')).toBe(true);
   });
 
   it('should return false if the string is not a valid mobile number', () => {
-    expect(isMobile('12345678')).toBe(false);
-    expect(isMobile('011-123456')).toBe(false);
-    expect(isMobile('016-123456')).toBe(false);
-    expect(isMobile('018-123456')).toBe(false);
-    expect(isMobile('019-123456')).toBe(false);
+    expect(isMobileNo('12345678')).toBe(false);
+    expect(isMobileNo('011-123456')).toBe(false);
+    expect(isMobileNo('016-123456')).toBe(false);
+    expect(isMobileNo('018-123456')).toBe(false);
+    expect(isMobileNo('019-123456')).toBe(false);
   });
 });
 
