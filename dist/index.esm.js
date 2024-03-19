@@ -1,4 +1,4 @@
-import dayjs from'dayjs';/********************************************************************************************************************
+import dayjs from'dayjs';import {v4}from'uuid';/********************************************************************************************************************
  * 값이 비어있는지 확인하는 함수
  * - Array 값이 비어있거나, Object 값이 비어있거나, 문자열이 비어있거나, null 또는 undefined 인 경우 true 반환
  * @param v 확인할 값
@@ -642,7 +642,23 @@ function base64Encode(data) {
  * ******************************************************************************************************************/
 function base64Decode(encData) {
     return Buffer.from(encData, 'base64').toString('utf8');
-}var compare = {
+}/********************************************************************************************************************
+ * UUID 생성하는 함수
+ * @param removeDash 하이픈 제거 여부
+ * @returns UUID
+ * ******************************************************************************************************************/
+function uuid(removeDash) {
+    var id = v4();
+    if (removeDash) {
+        return id.replace(/-/g, '');
+    }
+    else {
+        return id;
+    }
+}var base64 = {
+    encode: base64Encode,
+    decode: base64Decode,
+};var compare = {
     empty: empty,
     notEmpty: notEmpty,
     equal: equal,
@@ -674,6 +690,8 @@ function base64Decode(encData) {
     extract: extractDate,
 };var delay = {
     nextTick: nextTick,
+};var id = {
+    uuid: uuid,
 };var korean = {
     isSingleCharacter: isKoreanSingleCharacter,
     ro: koreanRo,
@@ -699,14 +717,13 @@ function base64Decode(encData) {
     personalNo: maskingPersonalNo,
 };var version = {
     toString: versionString,
-};var base64 = {
-    encode: base64Encode,
-    decode: base64Decode,
 };var PdgUtil = {
+    base64: base64,
     compare: compare,
     data: data,
     date: date,
     delay: delay,
+    id: id,
     korean: korean,
     number: number,
     tel: tel,
@@ -715,5 +732,4 @@ function base64Decode(encData) {
     personalNo: personalNo,
     masking: masking,
     version: version,
-    base64: base64,
-};export{PdgUtil,base64Decode,base64Encode,beginTime,companyNoAutoDash,contains,copy,PdgUtil as default,empty,endTime,equal,extractDate,formatDate,ifNotNull,ifNotNullAndUndefined,ifNotUndefined,ifNull,ifNullOrUndefined,ifUndefined,isCompanyNo,isEmail,isKoreanSingleCharacter,isMobile,isNumericOnlyText,isPersonalNo,isTel,isUrl,koreanAppendRo,koreanAppendRul,koreanRo,koreanRul,lv,maskingBatch,maskingCompanyNo,maskingEmail,maskingName,maskingPersonalNo,maskingTel,nextTick,notEmpty,now,nowJs,nowTime,numberFormat,personalNoAutoDash,telAutoDash,urlJoin,versionString,vl};
+};export{PdgUtil,base64Decode,base64Encode,beginTime,companyNoAutoDash,contains,copy,PdgUtil as default,empty,endTime,equal,extractDate,formatDate,ifNotNull,ifNotNullAndUndefined,ifNotUndefined,ifNull,ifNullOrUndefined,ifUndefined,isCompanyNo,isEmail,isKoreanSingleCharacter,isMobile,isNumericOnlyText,isPersonalNo,isTel,isUrl,koreanAppendRo,koreanAppendRul,koreanRo,koreanRul,lv,maskingBatch,maskingCompanyNo,maskingEmail,maskingName,maskingPersonalNo,maskingTel,nextTick,notEmpty,now,nowJs,nowTime,numberFormat,personalNoAutoDash,telAutoDash,urlJoin,uuid,versionString,vl};

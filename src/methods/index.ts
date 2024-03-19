@@ -70,3 +70,6 @@ export * from './versionString';
 /** base64 */
 export * from './base64Encode';
 export * from './base64Decode';
+
+/** id */
+export * from './uuid';

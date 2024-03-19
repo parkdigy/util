@@ -1,4 +1,4 @@
-'use strict';Object.defineProperty(exports,'__esModule',{value:true});var dayjs=require('dayjs');/********************************************************************************************************************
+'use strict';Object.defineProperty(exports,'__esModule',{value:true});var dayjs=require('dayjs'),uuid$1=require('uuid');/********************************************************************************************************************
  * 값이 비어있는지 확인하는 함수
  * - Array 값이 비어있거나, Object 값이 비어있거나, 문자열이 비어있거나, null 또는 undefined 인 경우 true 반환
  * @param v 확인할 값
@@ -642,7 +642,23 @@ function base64Encode(data) {
  * ******************************************************************************************************************/
 function base64Decode(encData) {
     return Buffer.from(encData, 'base64').toString('utf8');
-}var compare = {
+}/********************************************************************************************************************
+ * UUID 생성하는 함수
+ * @param removeDash 하이픈 제거 여부
+ * @returns UUID
+ * ******************************************************************************************************************/
+function uuid(removeDash) {
+    var id = uuid$1.v4();
+    if (removeDash) {
+        return id.replace(/-/g, '');
+    }
+    else {
+        return id;
+    }
+}var base64 = {
+    encode: base64Encode,
+    decode: base64Decode,
+};var compare = {
     empty: empty,
     notEmpty: notEmpty,
     equal: equal,
@@ -674,6 +690,8 @@ function base64Decode(encData) {
     extract: extractDate,
 };var delay = {
     nextTick: nextTick,
+};var id = {
+    uuid: uuid,
 };var korean = {
     isSingleCharacter: isKoreanSingleCharacter,
     ro: koreanRo,
@@ -699,14 +717,13 @@ function base64Decode(encData) {
     personalNo: maskingPersonalNo,
 };var version = {
     toString: versionString,
-};var base64 = {
-    encode: base64Encode,
-    decode: base64Decode,
 };var PdgUtil = {
+    base64: base64,
     compare: compare,
     data: data,
     date: date,
     delay: delay,
+    id: id,
     korean: korean,
     number: number,
     tel: tel,
@@ -715,5 +732,4 @@ function base64Decode(encData) {
     personalNo: personalNo,
     masking: masking,
     version: version,
-    base64: base64,
-};exports.PdgUtil=PdgUtil;exports.base64Decode=base64Decode;exports.base64Encode=base64Encode;exports.beginTime=beginTime;exports.companyNoAutoDash=companyNoAutoDash;exports.contains=contains;exports.copy=copy;exports.default=PdgUtil;exports.empty=empty;exports.endTime=endTime;exports.equal=equal;exports.extractDate=extractDate;exports.formatDate=formatDate;exports.ifNotNull=ifNotNull;exports.ifNotNullAndUndefined=ifNotNullAndUndefined;exports.ifNotUndefined=ifNotUndefined;exports.ifNull=ifNull;exports.ifNullOrUndefined=ifNullOrUndefined;exports.ifUndefined=ifUndefined;exports.isCompanyNo=isCompanyNo;exports.isEmail=isEmail;exports.isKoreanSingleCharacter=isKoreanSingleCharacter;exports.isMobile=isMobile;exports.isNumericOnlyText=isNumericOnlyText;exports.isPersonalNo=isPersonalNo;exports.isTel=isTel;exports.isUrl=isUrl;exports.koreanAppendRo=koreanAppendRo;exports.koreanAppendRul=koreanAppendRul;exports.koreanRo=koreanRo;exports.koreanRul=koreanRul;exports.lv=lv;exports.maskingBatch=maskingBatch;exports.maskingCompanyNo=maskingCompanyNo;exports.maskingEmail=maskingEmail;exports.maskingName=maskingName;exports.maskingPersonalNo=maskingPersonalNo;exports.maskingTel=maskingTel;exports.nextTick=nextTick;exports.notEmpty=notEmpty;exports.now=now;exports.nowJs=nowJs;exports.nowTime=nowTime;exports.numberFormat=numberFormat;exports.personalNoAutoDash=personalNoAutoDash;exports.telAutoDash=telAutoDash;exports.urlJoin=urlJoin;exports.versionString=versionString;exports.vl=vl;
+};exports.PdgUtil=PdgUtil;exports.base64Decode=base64Decode;exports.base64Encode=base64Encode;exports.beginTime=beginTime;exports.companyNoAutoDash=companyNoAutoDash;exports.contains=contains;exports.copy=copy;exports.default=PdgUtil;exports.empty=empty;exports.endTime=endTime;exports.equal=equal;exports.extractDate=extractDate;exports.formatDate=formatDate;exports.ifNotNull=ifNotNull;exports.ifNotNullAndUndefined=ifNotNullAndUndefined;exports.ifNotUndefined=ifNotUndefined;exports.ifNull=ifNull;exports.ifNullOrUndefined=ifNullOrUndefined;exports.ifUndefined=ifUndefined;exports.isCompanyNo=isCompanyNo;exports.isEmail=isEmail;exports.isKoreanSingleCharacter=isKoreanSingleCharacter;exports.isMobile=isMobile;exports.isNumericOnlyText=isNumericOnlyText;exports.isPersonalNo=isPersonalNo;exports.isTel=isTel;exports.isUrl=isUrl;exports.koreanAppendRo=koreanAppendRo;exports.koreanAppendRul=koreanAppendRul;exports.koreanRo=koreanRo;exports.koreanRul=koreanRul;exports.lv=lv;exports.maskingBatch=maskingBatch;exports.maskingCompanyNo=maskingCompanyNo;exports.maskingEmail=maskingEmail;exports.maskingName=maskingName;exports.maskingPersonalNo=maskingPersonalNo;exports.maskingTel=maskingTel;exports.nextTick=nextTick;exports.notEmpty=notEmpty;exports.now=now;exports.nowJs=nowJs;exports.nowTime=nowTime;exports.numberFormat=numberFormat;exports.personalNoAutoDash=personalNoAutoDash;exports.telAutoDash=telAutoDash;exports.urlJoin=urlJoin;exports.uuid=uuid;exports.versionString=versionString;exports.vl=vl;

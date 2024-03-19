@@ -1,4 +1,8 @@
 export declare const PdgUtil: {
+    base64: {
+        encode: typeof import("./methods").base64Encode;
+        decode: typeof import("./methods").base64Decode;
+    };
     compare: {
         empty: typeof import("./methods").empty;
         notEmpty: typeof import("./methods").notEmpty;
@@ -35,6 +39,9 @@ export declare const PdgUtil: {
     delay: {
         nextTick: typeof import("./methods").nextTick;
     };
+    id: {
+        uuid: typeof import("./methods").uuid;
+    };
     korean: {
         isSingleCharacter: typeof import("./methods").isKoreanSingleCharacter;
         ro: typeof import("./methods").koreanRo;
@@ -67,10 +74,6 @@ export declare const PdgUtil: {
     };
     version: {
         toString: typeof import("./methods").versionString;
-    };
-    base64: {
-        encode: typeof import("./methods").base64Encode;
-        decode: typeof import("./methods").base64Decode;
     };
 };
 export default PdgUtil;
