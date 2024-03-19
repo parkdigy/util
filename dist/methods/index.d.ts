@@ -9,7 +9,6 @@ export * from './ifUndefined';
 export * from './ifNotUndefined';
 export * from './ifNullOrUndefined';
 export * from './ifNotNullAndUndefined';
-export * from './isClass';
 export * from './isCompanyNo';
 export * from './isEmail';
 export * from './isMobile';

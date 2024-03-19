@@ -113,22 +113,6 @@ function ifNullOrUndefined(v, v2) {
 function ifNotNullAndUndefined(v, v2) {
     return v != null ? v2 : v;
 }/********************************************************************************************************************
- * 값이 클래스인지 확인하는 함수
- * @param obj 확인할 값
- * @returns 값이 클래스이면 true, 그렇지 않으면 false 반환
- * ******************************************************************************************************************/
-function isClass(obj) {
-    if (!obj)
-        return false;
-    var isCtorClass = obj.constructor && obj.constructor.toString().substring(0, 5) === 'class';
-    if (obj.prototype === undefined) {
-        return isCtorClass;
-    }
-    var isPrototypeCtorClass = obj.prototype.constructor &&
-        obj.prototype.constructor.toString &&
-        obj.prototype.constructor.toString().substring(0, 5) === 'class';
-    return isCtorClass || isPrototypeCtorClass;
-}/********************************************************************************************************************
  * 사업자번호 형식인지 확인하는 함수
  * @param v 확인할 값
  * @returns 사업자번호 형식이면 true, 그렇지 않으면 false 반환
@@ -669,7 +653,6 @@ function base64Decode(encData) {
     ifNotUndefined: ifNotUndefined,
     ifNullOrUndefined: ifNullOrUndefined,
     ifNotNullAndUndefined: ifNotNullAndUndefined,
-    isClass: isClass,
     isCompanyNo: isCompanyNo,
     isEmail: isEmail,
     isMobile: isMobile,
@@ -733,4 +716,4 @@ function base64Decode(encData) {
     masking: masking,
     version: version,
     base64: base64,
-};export{PdgUtil,base64Decode,base64Encode,beginTime,companyNoAutoDash,contains,copy,PdgUtil as default,empty,endTime,equal,extractDate,formatDate,ifNotNull,ifNotNullAndUndefined,ifNotUndefined,ifNull,ifNullOrUndefined,ifUndefined,isClass,isCompanyNo,isEmail,isKoreanSingleCharacter,isMobile,isNumericOnlyText,isPersonalNo,isTel,isUrl,koreanAppendRo,koreanAppendRul,koreanRo,koreanRul,lv,maskingBatch,maskingCompanyNo,maskingEmail,maskingName,maskingPersonalNo,maskingTel,nextTick,notEmpty,now,nowJs,nowTime,numberFormat,personalNoAutoDash,telAutoDash,urlJoin,versionString,vl};
+};export{PdgUtil,base64Decode,base64Encode,beginTime,companyNoAutoDash,contains,copy,PdgUtil as default,empty,endTime,equal,extractDate,formatDate,ifNotNull,ifNotNullAndUndefined,ifNotUndefined,ifNull,ifNullOrUndefined,ifUndefined,isCompanyNo,isEmail,isKoreanSingleCharacter,isMobile,isNumericOnlyText,isPersonalNo,isTel,isUrl,koreanAppendRo,koreanAppendRul,koreanRo,koreanRul,lv,maskingBatch,maskingCompanyNo,maskingEmail,maskingName,maskingPersonalNo,maskingTel,nextTick,notEmpty,now,nowJs,nowTime,numberFormat,personalNoAutoDash,telAutoDash,urlJoin,versionString,vl};

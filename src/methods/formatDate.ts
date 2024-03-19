@@ -20,3 +20,5 @@ export function formatDate<
     return dayjs(date).format(format === undefined ? 'YYYY-MM-DD HH:mm:ss' : format) as RT;
   }
 }
+
+export default formatDate;

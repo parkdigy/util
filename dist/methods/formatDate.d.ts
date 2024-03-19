@@ -7,3 +7,4 @@
  * ******************************************************************************************************************/
 import { Dayjs } from 'dayjs';
 export declare function formatDate<T extends Dayjs | Date | string | null | undefined, RT = T extends null ? null : T extends undefined ? undefined : string>(date: T, format?: string): RT;
+export default formatDate;

@@ -10,7 +10,6 @@ export declare const PdgUtil: {
         ifNotUndefined: typeof import("./methods").ifNotUndefined;
         ifNullOrUndefined: typeof import("./methods").ifNullOrUndefined;
         ifNotNullAndUndefined: typeof import("./methods").ifNotNullAndUndefined;
-        isClass: typeof import("./methods").isClass;
         isCompanyNo: typeof import("./methods").isCompanyNo;
         isEmail: typeof import("./methods").isEmail;
         isMobile: typeof import("./methods").isMobile;
