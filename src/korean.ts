@@ -1,4 +1,11 @@
-import { isKoreanSingleCharacter, koreanRo, koreanAppendRo, koreanRul, koreanAppendRul } from './methods';
+import {
+  isKoreanSingleCharacter,
+  koreanRo,
+  koreanAppendRo,
+  koreanRul,
+  koreanAppendRul,
+  isContainsKorean,
+} from './methods';
 
 export const korean = {
   isSingleCharacter: isKoreanSingleCharacter,
@@ -6,6 +13,7 @@ export const korean = {
   appendRo: koreanAppendRo,
   rul: koreanRul,
   appendRul: koreanAppendRul,
+  isContainsKorean,
 };
 
 export default korean;

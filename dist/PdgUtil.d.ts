@@ -48,6 +48,7 @@ export declare const PdgUtil: {
         appendRo: typeof import("./methods").koreanAppendRo;
         rul: typeof import("./methods").koreanRul;
         appendRul: typeof import("./methods").koreanAppendRul;
+        isContainsKorean: typeof import("./methods").isContainsKorean;
     };
     number: {
         format: typeof import("./methods").numberFormat;
