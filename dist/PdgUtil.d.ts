@@ -10,6 +10,14 @@ export declare const PdgUtil: {
         ifNotUndefined: typeof import("./methods").ifNotUndefined;
         ifNullOrUndefined: typeof import("./methods").ifNullOrUndefined;
         ifNotNullAndUndefined: typeof import("./methods").ifNotNullAndUndefined;
+        isClass: typeof import("./methods").isClass;
+        isCompanyNo: typeof import("./methods").isCompanyNo;
+        isEmail: typeof import("./methods").isEmail;
+        isMobile: typeof import("./methods").isMobile;
+        isNumericOnlyText: typeof import("./methods").isNumericOnlyText;
+        isPersonalNo: typeof import("./methods").isPersonalNo;
+        isTel: typeof import("./methods").isTel;
+        isUrl: typeof import("./methods").isUrl;
     };
     data: {
         lv: typeof import("./methods").lv;
@@ -17,6 +25,9 @@ export declare const PdgUtil: {
         copy: typeof import("./methods").copy;
     };
     date: {
+        now: typeof import("./methods").now;
+        nowJs: typeof import("./methods").nowJs;
+        nowTime: typeof import("./methods").nowTime;
         beginTime: typeof import("./methods").beginTime;
         endTime: typeof import("./methods").endTime;
         format: typeof import("./methods").formatDate;

@@ -9,6 +9,14 @@ export * from './ifUndefined';
 export * from './ifNotUndefined';
 export * from './ifNullOrUndefined';
 export * from './ifNotNullAndUndefined';
+export * from './isClass';
+export * from './isCompanyNo';
+export * from './isEmail';
+export * from './isMobile';
+export * from './isNumericOnlyText';
+export * from './isPersonalNo';
+export * from './isTel';
+export * from './isUrl';
 /** data */
 export * from './lv';
 export * from './vl';
@@ -16,6 +24,9 @@ export * from './copy';
 /** delay */
 export * from './nextTick';
 /** date */
+export * from './now';
+export * from './nowJs';
+export * from './nowTime';
 export * from './beginTime';
 export * from './endTime';
 export * from './formatDate';

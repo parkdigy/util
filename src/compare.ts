@@ -9,6 +9,14 @@ import {
   ifNotUndefined,
   ifNullOrUndefined,
   ifNotNullAndUndefined,
+  isClass,
+  isCompanyNo,
+  isEmail,
+  isMobile,
+  isNumericOnlyText,
+  isPersonalNo,
+  isTel,
+  isUrl,
 } from './methods';
 
 export const compare = {
@@ -22,6 +30,14 @@ export const compare = {
   ifNotUndefined,
   ifNullOrUndefined,
   ifNotNullAndUndefined,
+  isClass,
+  isCompanyNo,
+  isEmail,
+  isMobile,
+  isNumericOnlyText,
+  isPersonalNo,
+  isTel,
+  isUrl,
 };
 
 export default compare;

@@ -112,6 +112,150 @@ function ifNullOrUndefined(v, v2) {
  * ******************************************************************************************************************/
 function ifNotNullAndUndefined(v, v2) {
     return v != null ? v2 : v;
+}/********************************************************************************************************************
+ * 값이 클래스인지 확인하는 함수
+ * @param obj 확인할 값
+ * @returns 값이 클래스이면 true, 그렇지 않으면 false 반환
+ * ******************************************************************************************************************/
+function isClass(obj) {
+    if (!obj)
+        return false;
+    var isCtorClass = obj.constructor && obj.constructor.toString().substring(0, 5) === 'class';
+    if (obj.prototype === undefined) {
+        return isCtorClass;
+    }
+    var isPrototypeCtorClass = obj.prototype.constructor &&
+        obj.prototype.constructor.toString &&
+        obj.prototype.constructor.toString().substring(0, 5) === 'class';
+    return isCtorClass || isPrototypeCtorClass;
+}/********************************************************************************************************************
+ * 사업자번호 형식인지 확인하는 함수
+ * @param v 확인할 값
+ * @returns 사업자번호 형식이면 true, 그렇지 않으면 false 반환
+ * ******************************************************************************************************************/
+function isCompanyNo(v) {
+    return /(([0-9]{3})([0-9]{2})([0-9]{5}))|(([0-9]{3})-([0-9]{2})-([0-9]{5}))/.test(v);
+}/********************************************************************************************************************
+ * 이메일 형식인지 확인하는 함수
+ * @param v 확인할 값
+ * @returns 이메일 형식이면 true, 그렇지 않으면 false 반환
+ * ******************************************************************************************************************/
+function isEmail(v) {
+    return new RegExp(/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/, 'g').test(v);
+}/********************************************************************************************************************
+ * 전화번호에 자동으로 하이픈 추가하는 함수
+ * @param v 전화번호
+ * @returns 하이픈 추가된 전화번호
+ * ******************************************************************************************************************/
+function telAutoDash(v) {
+    if (v === undefined)
+        return undefined;
+    if (v === null)
+        return null;
+    var str = v.replace(/[^0-9*]/g, '');
+    var isLastDash = v.substring(v.length - 1, v.length) === '-';
+    if (str.substring(0, 1) !== '0' && !['15', '16', '18'].includes(str.substring(0, 2))) {
+        return v;
+    }
+    var tmp = '';
+    var preLen;
+    switch (str.substring(0, 2)) {
+        case '02':
+            preLen = 2;
+            break;
+        case '15':
+        case '16':
+        case '18':
+            preLen = 4;
+            break;
+        default:
+            preLen = 3;
+    }
+    if (['15', '16', '18'].includes(str.substring(0, 2))) {
+        if (str.length <= preLen) {
+            tmp = str;
+        }
+        else if (str.length <= preLen + 4) {
+            tmp += str.substring(0, preLen);
+            tmp += '-';
+            tmp += str.substring(preLen);
+        }
+        else {
+            tmp = str;
+        }
+    }
+    else if (str.length <= preLen) {
+        tmp = str;
+    }
+    else if (str.length <= preLen + 3) {
+        tmp += str.substring(0, preLen);
+        tmp += '-';
+        tmp += str.substring(preLen);
+    }
+    else if (str.length <= preLen + 7) {
+        tmp += str.substring(0, preLen);
+        tmp += '-';
+        tmp += str.substring(preLen, preLen + 3);
+        tmp += '-';
+        tmp += str.substring(preLen + 3);
+    }
+    else if (str.length <= preLen + 8) {
+        tmp += str.substring(0, preLen);
+        tmp += '-';
+        tmp += str.substring(preLen, preLen + 4);
+        tmp += '-';
+        tmp += str.substring(preLen + 4);
+    }
+    else {
+        tmp = str;
+    }
+    if (isLastDash) {
+        if (str.length === preLen) {
+            tmp += '-';
+        }
+    }
+    return tmp;
+}/********************************************************************************************************************
+ * 휴대전화번호 형식인지 확인하는 함수
+ * @param v 확인할 값
+ * @returns 휴대전화번호 형식이면 true, 그렇지 않으면 false 반환
+ * ******************************************************************************************************************/
+function isMobile(v) {
+    return /(^(01(?:0|1|[6-9]))([0-9]{3,4})([0-9]{4,4})$)|(^(01(?:0|1|[6-9]))-([0-9]{3,4})-([0-9]{4,4})$)|(^\+(?:[-]?[0-9]){8,}$)/.test(telAutoDash(v));
+}/********************************************************************************************************************
+ * 문자열에 숫자만 포함되어 있는지 확인하는 함수
+ * @param v 확인할 값
+ * @returns 숫자만 포함되어 있으면 true, 그렇지 않으면 false 반환
+ * ******************************************************************************************************************/
+function isNumericOnlyText(v) {
+    return !/[^0-9]/gim.test(v);
+}/********************************************************************************************************************
+ * 주민등록번호 형식인지 확인하는 함수
+ * @param v 확인할 값
+ * @returns 주민등록번호 형식이면 true, 그렇지 않으면 false 반환
+ * ******************************************************************************************************************/
+function isPersonalNo(v) {
+    return /(([0-9]{6})([0-9]{7}))|(([0-9]{6})-([0-9]{7}))/.test(v);
+}/********************************************************************************************************************
+ * 전화번호 형식인지 확인하는 함수
+ * @param v 확인할 값
+ * @returns 전화번호 형식이면 true, 그렇지 않으면 false 반환
+ * ******************************************************************************************************************/
+function isTel(v) {
+    return /(^([0-9]{2,3})([0-9]{3,4})([0-9]{4})$)|(^([0-9]{2,3})-([0-9]{3,4})-([0-9]{4})$)|(^([0-9]{4})-([0-9]{4})$)|(^\+(?:[-]?[0-9]){8,}$)/.test(telAutoDash(v));
+}/********************************************************************************************************************
+ * URL 형식인지 확인하는 함수
+ * @param v 확인할 값
+ * @param allowInnerUrl 내부 URL을 허용할지 여부
+ * @returns URL 형식이면 true, 그렇지 않으면 false 반환
+ * ******************************************************************************************************************/
+function isUrl(v, allowInnerUrl) {
+    if (allowInnerUrl) {
+        return /^((?:http(s)?:\/\/)?[\w.-]+(?:\.[\w.-]+)|\/)+[\w\-._~:/?#[\]@!$&'%()*+,;=.]+$/.test(v);
+    }
+    else {
+        return /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w.-]+)+[\w\-._~:/?#[\]@!$&'%()*+,;=.]+$/.test(v);
+    }
 }/******************************************************************************
 Copyright (c) Microsoft Corporation.
 
@@ -175,6 +319,21 @@ function copy(value) {
  * ******************************************************************************************************************/
 function nextTick(callback, delay) {
     return setTimeout(callback, delay === undefined ? 1 : delay);
+}/********************************************************************************************************************
+ * 현재 시간의 Date 객체를 반환하는 함수
+ * ******************************************************************************************************************/
+function now() {
+    return new Date();
+}/********************************************************************************************************************
+ * 현재 시간의 Dayjs 객체를 반환하는 함수
+ * ******************************************************************************************************************/
+function nowJs() {
+    return dayjs();
+}/********************************************************************************************************************
+ * 현재 시간의 Time 값을 반환하는 함수
+ * ******************************************************************************************************************/
+function nowTime() {
+    return new Date().getTime();
 }/********************************************************************************************************************
  * 날짜의 시간을 00:00:00.0 으로 변경해서 반환
  * ******************************************************************************************************************/
@@ -299,79 +458,6 @@ function numberFormat(num) {
         return formattedIntegerPart;
     }
     return numValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-}/********************************************************************************************************************
- * 전화번호에 자동으로 하이픈 추가하는 함수
- * @param v 전화번호
- * @returns 하이픈 추가된 전화번호
- * ******************************************************************************************************************/
-function telAutoDash(v) {
-    if (v === undefined)
-        return undefined;
-    if (v === null)
-        return null;
-    var str = v.replace(/[^0-9*]/g, '');
-    var isLastDash = v.substring(v.length - 1, v.length) === '-';
-    if (str.substring(0, 1) !== '0' && !['15', '16', '18'].includes(str.substring(0, 2))) {
-        return v;
-    }
-    var tmp = '';
-    var preLen;
-    switch (str.substring(0, 2)) {
-        case '02':
-            preLen = 2;
-            break;
-        case '15':
-        case '16':
-        case '18':
-            preLen = 4;
-            break;
-        default:
-            preLen = 3;
-    }
-    if (['15', '16', '18'].includes(str.substring(0, 2))) {
-        if (str.length <= preLen) {
-            tmp = str;
-        }
-        else if (str.length <= preLen + 4) {
-            tmp += str.substring(0, preLen);
-            tmp += '-';
-            tmp += str.substring(preLen);
-        }
-        else {
-            tmp = str;
-        }
-    }
-    else if (str.length <= preLen) {
-        tmp = str;
-    }
-    else if (str.length <= preLen + 3) {
-        tmp += str.substring(0, preLen);
-        tmp += '-';
-        tmp += str.substring(preLen);
-    }
-    else if (str.length <= preLen + 7) {
-        tmp += str.substring(0, preLen);
-        tmp += '-';
-        tmp += str.substring(preLen, preLen + 3);
-        tmp += '-';
-        tmp += str.substring(preLen + 3);
-    }
-    else if (str.length <= preLen + 8) {
-        tmp += str.substring(0, preLen);
-        tmp += '-';
-        tmp += str.substring(preLen, preLen + 4);
-        tmp += '-';
-        tmp += str.substring(preLen + 4);
-    }
-    else {
-        tmp = str;
-    }
-    if (isLastDash) {
-        if (str.length === preLen) {
-            tmp += '-';
-        }
-    }
-    return tmp;
 }/********************************************************************************************************************
  * URL을 조합해서 반환
  * @param parts URL 조각
@@ -583,11 +669,22 @@ function base64Decode(encData) {
     ifNotUndefined: ifNotUndefined,
     ifNullOrUndefined: ifNullOrUndefined,
     ifNotNullAndUndefined: ifNotNullAndUndefined,
+    isClass: isClass,
+    isCompanyNo: isCompanyNo,
+    isEmail: isEmail,
+    isMobile: isMobile,
+    isNumericOnlyText: isNumericOnlyText,
+    isPersonalNo: isPersonalNo,
+    isTel: isTel,
+    isUrl: isUrl,
 };var data = {
     lv: lv,
     vl: vl,
     copy: copy,
 };var date = {
+    now: now,
+    nowJs: nowJs,
+    nowTime: nowTime,
     beginTime: beginTime,
     endTime: endTime,
     format: formatDate,
@@ -636,4 +733,4 @@ function base64Decode(encData) {
     masking: masking,
     version: version,
     base64: base64,
-};export{PdgUtil,base64Decode,base64Encode,beginTime,companyNoAutoDash,contains,copy,PdgUtil as default,empty,endTime,equal,extractDate,formatDate,ifNotNull,ifNotNullAndUndefined,ifNotUndefined,ifNull,ifNullOrUndefined,ifUndefined,isKoreanSingleCharacter,koreanAppendRo,koreanAppendRul,koreanRo,koreanRul,lv,maskingBatch,maskingCompanyNo,maskingEmail,maskingName,maskingPersonalNo,maskingTel,nextTick,notEmpty,numberFormat,personalNoAutoDash,telAutoDash,urlJoin,versionString,vl};
+};export{PdgUtil,base64Decode,base64Encode,beginTime,companyNoAutoDash,contains,copy,PdgUtil as default,empty,endTime,equal,extractDate,formatDate,ifNotNull,ifNotNullAndUndefined,ifNotUndefined,ifNull,ifNullOrUndefined,ifUndefined,isClass,isCompanyNo,isEmail,isKoreanSingleCharacter,isMobile,isNumericOnlyText,isPersonalNo,isTel,isUrl,koreanAppendRo,koreanAppendRul,koreanRo,koreanRul,lv,maskingBatch,maskingCompanyNo,maskingEmail,maskingName,maskingPersonalNo,maskingTel,nextTick,notEmpty,now,nowJs,nowTime,numberFormat,personalNoAutoDash,telAutoDash,urlJoin,versionString,vl};
