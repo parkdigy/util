@@ -380,9 +380,9 @@ function extractDate(dt) {
         millisecond: date.millisecond(),
     };
 }/********************************************************************************************************************
- * weekDay 에 해당하는 요일을 한글로 반환하는 함수
+ * week day 에 해당하는 요일을 한글로 반환하는 함수
  * ******************************************************************************************************************/
-function weekDayText(weekDay) {
+function weekdayText(weekDay) {
     switch (weekDay) {
         case 0:
             return '일';
@@ -716,7 +716,7 @@ function uuid(removeDash) {
     endTime: endTime,
     format: formatDate,
     extract: extractDate,
-    weekDayText: weekDayText,
+    weekdayText: weekdayText,
 };var delay = {
     nextTick: nextTick,
 };var id = {
@@ -762,4 +762,4 @@ function uuid(removeDash) {
     personalNo: personalNo,
     masking: masking,
     version: version,
-};export{PdgUtil,base64Decode,base64Encode,beginTime,companyNoAutoDash,contains,copy,PdgUtil as default,empty,endTime,equal,extractDate,formatDate,ifNotNull,ifNotNullAndUndefined,ifNotUndefined,ifNull,ifNullOrUndefined,ifUndefined,isCompanyNo,isContainsKorean,isEmail,isKoreanSingleCharacter,isMobile,isNumericOnlyText,isPersonalNo,isTel,isUrl,koreanAppendRo,koreanAppendRul,koreanRo,koreanRul,lv,maskingBatch,maskingCompanyNo,maskingEmail,maskingName,maskingPersonalNo,maskingTel,nextTick,notEmpty,now,nowJs,nowTime,numberFormat,personalNoAutoDash,telAutoDash,urlJoin,uuid,versionString,vl,weekDayText};
+};export{PdgUtil,base64Decode,base64Encode,beginTime,companyNoAutoDash,contains,copy,PdgUtil as default,empty,endTime,equal,extractDate,formatDate,ifNotNull,ifNotNullAndUndefined,ifNotUndefined,ifNull,ifNullOrUndefined,ifUndefined,isCompanyNo,isContainsKorean,isEmail,isKoreanSingleCharacter,isMobile,isNumericOnlyText,isPersonalNo,isTel,isUrl,koreanAppendRo,koreanAppendRul,koreanRo,koreanRul,lv,maskingBatch,maskingCompanyNo,maskingEmail,maskingName,maskingPersonalNo,maskingTel,nextTick,notEmpty,now,nowJs,nowTime,numberFormat,personalNoAutoDash,telAutoDash,urlJoin,uuid,versionString,vl,weekdayText};

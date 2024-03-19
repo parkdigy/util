@@ -35,7 +35,7 @@ export declare const PdgUtil: {
         endTime: typeof import("./methods").endTime;
         format: typeof import("./methods").formatDate;
         extract: typeof import("./methods").extractDate;
-        weekDayText: typeof import("./methods").weekDayText;
+        weekdayText: typeof import("./methods").weekdayText;
     };
     delay: {
         nextTick: typeof import("./methods").nextTick;

@@ -1,4 +1,4 @@
-import { now, nowJs, nowTime, beginTime, endTime, formatDate, extractDate, weekDayText } from './methods';
+import { now, nowJs, nowTime, beginTime, endTime, formatDate, extractDate, weekdayText } from './methods';
 
 export const date = {
   now,
@@ -8,7 +8,7 @@ export const date = {
   endTime,
   format: formatDate,
   extract: extractDate,
-  weekDayText,
+  weekdayText,
 };
 
 export default date;

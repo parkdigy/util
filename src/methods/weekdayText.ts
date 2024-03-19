@@ -1,8 +1,8 @@
 /********************************************************************************************************************
- * weekDay 에 해당하는 요일을 한글로 반환하는 함수
+ * week day 에 해당하는 요일을 한글로 반환하는 함수
  * ******************************************************************************************************************/
 
-export function weekDayText(weekDay: number): string {
+export function weekdayText(weekDay: number): string {
   switch (weekDay) {
     case 0:
       return '일';
@@ -23,4 +23,4 @@ export function weekDayText(weekDay: number): string {
   }
 }
 
-export default weekDayText;
+export default weekdayText;

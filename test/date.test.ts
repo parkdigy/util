@@ -3,7 +3,7 @@ import beginTime from '../src/methods/beginTime';
 import endTime from '../src/methods/endTime';
 import formatDate from '../src/methods/formatDate';
 import extractDate from '../src/methods/extractDate';
-import weekDayText from '../src/methods/weekDayText';
+import weekdayText from '../src/methods/weekdayText';
 
 describe('beginTime', () => {
   it('should return the date with time set to 00:00:00.0', () => {
@@ -141,21 +141,21 @@ describe('extractDate', () => {
 
 describe('weekDayText', () => {
   it('should return Korean weekday text for each weekday number', () => {
-    expect(weekDayText(0)).toBe('일');
-    expect(weekDayText(1)).toBe('월');
-    expect(weekDayText(2)).toBe('화');
-    expect(weekDayText(3)).toBe('수');
-    expect(weekDayText(4)).toBe('목');
-    expect(weekDayText(5)).toBe('금');
-    expect(weekDayText(6)).toBe('토');
+    expect(weekdayText(0)).toBe('일');
+    expect(weekdayText(1)).toBe('월');
+    expect(weekdayText(2)).toBe('화');
+    expect(weekdayText(3)).toBe('수');
+    expect(weekdayText(4)).toBe('목');
+    expect(weekdayText(5)).toBe('금');
+    expect(weekdayText(6)).toBe('토');
   });
 
   it('should return empty string for numbers outside of 0-6', () => {
-    expect(weekDayText(-1)).toBe('');
-    expect(weekDayText(7)).toBe('');
+    expect(weekdayText(-1)).toBe('');
+    expect(weekdayText(7)).toBe('');
   });
 
   it('should return empty string for non-integer numbers', () => {
-    expect(weekDayText(1.5)).toBe('');
+    expect(weekdayText(1.5)).toBe('');
   });
 });
