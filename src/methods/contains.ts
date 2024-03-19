@@ -5,7 +5,10 @@
  * @returns 포함 여부
  * ******************************************************************************************************************/
 
-export function contains<T extends string | number>(list: ReadonlyArray<T>, value: string | number): boolean {
+export function contains<T extends string | number | boolean | null | undefined>(
+  list: ReadonlyArray<T>,
+  value: string | number | boolean | null | undefined
+): boolean {
   let found = false;
   for (const v of list) {
     if (v === value) {
