@@ -1,4 +1,4 @@
-import versionString from '../src/methods/versionString';
+import { versionString } from '../src/methods/version';
 
 describe('util.version', () => {
   describe('toString', () => {

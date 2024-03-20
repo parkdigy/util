@@ -1,4 +1,4 @@
-import companyNoAutoDash from '../src/methods/companyNoAutoDash';
+import { companyNoAutoDash } from '../src/methods/companyNo';
 
 describe('util.companyNo', () => {
   describe('autoDash', () => {

@@ -1,9 +1,5 @@
 import dayjs from 'dayjs';
-import beginTime from '../src/methods/beginTime';
-import endTime from '../src/methods/endTime';
-import formatDate from '../src/methods/formatDate';
-import extractDate from '../src/methods/extractDate';
-import weekdayText from '../src/methods/weekdayText';
+import { beginTime, endTime, formatDate, extractDate, weekdayText } from '../src/methods/date';
 
 describe('beginTime', () => {
   it('should return the date with time set to 00:00:00.0', () => {

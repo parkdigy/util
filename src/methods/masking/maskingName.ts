@@ -2,7 +2,7 @@
  * 이름 마스킹
  * ******************************************************************************************************************/
 
-import notEmpty from './notEmpty';
+import notEmpty from '../compare/notEmpty';
 
 export function maskingName(name: string) {
   let newName = name;

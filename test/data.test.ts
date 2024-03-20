@@ -1,6 +1,4 @@
-import lv from '../src/methods/lv';
-import vl from '../src/methods/vl';
-import copy from '../src/methods/copy';
+import { lv, vl, copy } from '../src/methods/data';
 
 describe('lv function', () => {
   it('should return an object with label and value properties', () => {

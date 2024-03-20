@@ -1,4 +1,4 @@
-import personalNoAutoDash from '../src/methods/personalNoAutoDash';
+import { personalNoAutoDash } from '../src/methods/personalNo';
 
 describe('util.personalNo', () => {
   describe('autoDash', () => {

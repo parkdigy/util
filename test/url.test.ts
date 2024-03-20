@@ -1,4 +1,4 @@
-import urlJoin from '../src/methods/urlJoin';
+import { urlJoin } from '../src/methods/url';
 
 describe('util.url', () => {
   describe('join', () => {

@@ -2,8 +2,8 @@
  * 사업자등록번호 마스킹
  * ******************************************************************************************************************/
 
-import notEmpty from './notEmpty';
-import companyNoAutoDash from './companyNoAutoDash';
+import notEmpty from '../compare/notEmpty';
+import companyNoAutoDash from '../companyNo/companyNoAutoDash';
 
 export function maskingCompanyNo(companyNo: string) {
   let newCompanyNo = companyNo;

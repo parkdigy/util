@@ -2,8 +2,8 @@
  * 주민등록번호 마스킹
  * ******************************************************************************************************************/
 
-import notEmpty from './notEmpty';
-import personalNoAutoDash from './personalNoAutoDash';
+import notEmpty from '../compare/notEmpty';
+import personalNoAutoDash from '../personalNo/personalNoAutoDash';
 
 export function maskingPersonalNo(personalNo: string) {
   let newPersonalNo = personalNo;

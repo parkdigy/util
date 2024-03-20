@@ -4,7 +4,7 @@
  * @returns 전화번호 형식이면 true, 그렇지 않으면 false 반환
  * ******************************************************************************************************************/
 
-import telNoAutoDash from './telNoAutoDash';
+import telNoAutoDash from '../telNo/telNoAutoDash';
 
 export function isTelNo(v: string): boolean {
   return /(^([0-9]{2,3})([0-9]{3,4})([0-9]{4})$)|(^([0-9]{2,3})-([0-9]{3,4})-([0-9]{4})$)|(^([0-9]{4})-([0-9]{4})$)|(^\+(?:[-]?[0-9]){8,}$)/.test(

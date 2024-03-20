@@ -1,9 +1,11 @@
-import maskingBatch from '../src/methods/maskingBatch';
-import maskingName from '../src/methods/maskingName';
-import maskingTel from '../src/methods/maskingTel';
-import maskingEmail from '../src/methods/maskingEmail';
-import maskingPersonalNo from '../src/methods/maskingPersonalNo';
-import maskingCompanyNo from '../src/methods/maskingCompanyNo';
+import {
+  maskingBatch,
+  maskingName,
+  maskingTel,
+  maskingEmail,
+  maskingPersonalNo,
+  maskingCompanyNo,
+} from '../src/methods/masking';
 
 describe('Masking', () => {
   describe('batch', () => {

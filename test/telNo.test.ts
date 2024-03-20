@@ -1,4 +1,4 @@
-import telNoAutoDash from '../src/methods/telNoAutoDash';
+import { telNoAutoDash } from '../src/methods/telNo';
 
 describe('autoDash', () => {
   it('should add dashes to the telephone number', () => {

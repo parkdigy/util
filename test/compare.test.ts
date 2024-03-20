@@ -1,17 +1,22 @@
-import empty from '../src/methods/empty';
-import notEmpty from '../src/methods/notEmpty';
-import equal from '../src/methods/equal';
-import contains from '../src/methods/contains';
-import ifNull from '../src/methods/ifNull';
-import ifUndefined from '../src/methods/ifUndefined';
-import ifNullOrUndefined from '../src/methods/ifNullOrUndefined';
-import isEmail from '../src/methods/isEmail';
-import isUrl from '../src/methods/isUrl';
-import isTelNo from '../src/methods/isTelNo';
-import isMobileNo from '../src/methods/isMobileNo';
-import isPersonalNo from '../src/methods/isPersonalNo';
-import isCompanyNo from '../src/methods/isCompanyNo';
-import isNumericOnlyText from '../src/methods/isNumericOnlyText';
+import {
+  empty,
+  notEmpty,
+  equal,
+  contains,
+  ifNull,
+  ifNotNull,
+  ifUndefined,
+  ifNotUndefined,
+  ifNullOrUndefined,
+  ifNotNullAndUndefined,
+  isEmail,
+  isUrl,
+  isTelNo,
+  isMobileNo,
+  isPersonalNo,
+  isCompanyNo,
+  isNumericOnlyText,
+} from '../src/methods/compare';
 
 describe('empty', () => {
   it('should return true for empty values', () => {
@@ -87,6 +92,28 @@ describe('ifNull', () => {
   });
 });
 
+describe('ifNotNull', () => {
+  it('should return the replacement value when the original value is not null', () => {
+    const result = ifNotNull('original', 'replacement');
+    expect(result).toBe('replacement');
+  });
+
+  it('should return the original value when the original value is null', () => {
+    const result = ifNotNull(null, 'replacement');
+    expect(result).toBe(null);
+  });
+
+  it('should handle non-string values', () => {
+    const result = ifNotNull(123, 'replacement');
+    expect(result).toBe('replacement');
+  });
+
+  it('should handle undefined values', () => {
+    const result = ifNotNull(undefined, 'replacement');
+    expect(result).toBe('replacement');
+  });
+});
+
 describe('ifUndefined', () => {
   it('should return the second value if the first value is undefined', () => {
     expect(ifUndefined(undefined, 'default')).toBe('default');
@@ -99,6 +126,28 @@ describe('ifUndefined', () => {
   });
 });
 
+describe('ifNotUndefined', () => {
+  it('should return the replacement value when the original value is not undefined', () => {
+    const result = ifNotUndefined('original', 'replacement');
+    expect(result).toBe('replacement');
+  });
+
+  it('should return the original value when the original value is undefined', () => {
+    const result = ifNotUndefined(undefined, 'replacement');
+    expect(result).toBe(undefined);
+  });
+
+  it('should handle non-string values', () => {
+    const result = ifNotUndefined(123, 'replacement');
+    expect(result).toBe('replacement');
+  });
+
+  it('should handle null values', () => {
+    const result = ifNotUndefined(null, 'replacement');
+    expect(result).toBe('replacement');
+  });
+});
+
 describe('ifNullOrUndefined', () => {
   it('should return the second value if the first value is null or undefined', () => {
     expect(ifNullOrUndefined(null, 'default')).toBe('default');
@@ -108,6 +157,28 @@ describe('ifNullOrUndefined', () => {
   it('should return the first value if it is not null or undefined', () => {
     expect(ifNullOrUndefined('value', 'default')).toBe('value');
     expect(ifNullOrUndefined(0, 10)).toBe(0);
+  });
+});
+
+describe('ifNotNullAndUndefined', () => {
+  it('should return the replacement value when the original value is not null or undefined', () => {
+    const result = ifNotNullAndUndefined('original', 'replacement');
+    expect(result).toBe('replacement');
+  });
+
+  it('should return the original value when the original value is null', () => {
+    const result = ifNotNullAndUndefined(null, 'replacement');
+    expect(result).toBe(null);
+  });
+
+  it('should return the original value when the original value is undefined', () => {
+    const result = ifNotNullAndUndefined(undefined, 'replacement');
+    expect(result).toBe(undefined);
+  });
+
+  it('should handle non-string values', () => {
+    const result = ifNotNullAndUndefined(123, 'replacement');
+    expect(result).toBe('replacement');
   });
 });
 

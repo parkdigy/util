@@ -1,5 +1,4 @@
-import base64Encode from '../src/methods/base64Encode';
-import base64Decode from '../src/methods/base64Decode';
+import { base64Encode, base64Decode } from '../src/methods/base64';
 
 describe('util.base64', () => {
   it('should encode the data to base64', () => {

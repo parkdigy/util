@@ -2,7 +2,7 @@
  * 이메일 마스킹
  * ******************************************************************************************************************/
 
-import notEmpty from './notEmpty';
+import notEmpty from '../compare/notEmpty';
 
 export function maskingEmail(email: string) {
   let newEmail = email;

@@ -1,4 +1,31 @@
 import dayjs from'dayjs';import {v4}from'uuid';/********************************************************************************************************************
+ * base64 인코딩 함수
+ * @param data 인코딩할 데이터
+ * @returns base64 인코딩된 데이터
+ * ******************************************************************************************************************/
+function base64Encode(data) {
+    return Buffer.from(data, 'utf8').toString('base64');
+}/********************************************************************************************************************
+ * base64 디코딩 함수
+ * @param encData 디코딩할 데이터
+ * @returns base64 디코딩된 데이터
+ * ******************************************************************************************************************/
+function base64Decode(encData) {
+    return Buffer.from(encData, 'base64').toString('utf8');
+}/********************************************************************************************************************
+ * 사업자 등록번호에 하이픈 추가하는 함수
+ * @param companyNo 사업자등록번호
+ * @returns 하이픈이 추가된 사업자등록번호
+ * ******************************************************************************************************************/
+function companyNoAutoDash(companyNo) {
+    var str = companyNo.replace(/[^0-9*]/g, '');
+    var values = [str.slice(0, 3)];
+    if (str.length > 3)
+        values.push(str.slice(3, 5));
+    if (str.length > 5)
+        values.push(str.slice(5));
+    return values.join('-');
+}/********************************************************************************************************************
  * 값이 비어있는지 확인하는 함수
  * - Array 값이 비어있거나, Object 값이 비어있거나, 문자열이 비어있거나, null 또는 undefined 인 경우 true 반환
  * @param v 확인할 값
@@ -297,13 +324,6 @@ function vl(value, label, other) {
 function copy(value) {
     return JSON.parse(JSON.stringify(value));
 }/********************************************************************************************************************
- * 다음 틱에서 콜백을 실행합니다.
- * @param callback - 콜백입니다.
- * @param delay - 지연(milliseconds) 시간입니다. (기본값 : 1)
- * ******************************************************************************************************************/
-function nextTick(callback, delay) {
-    return setTimeout(callback, delay === undefined ? 1 : delay);
-}/********************************************************************************************************************
  * 현재 시간의 Date 객체를 반환하는 함수
  * ******************************************************************************************************************/
 function now() {
@@ -401,6 +421,26 @@ function weekdayText(weekDay) {
         default:
             return '';
     }
+}/********************************************************************************************************************
+ * 다음 틱에서 콜백을 실행합니다.
+ * @param callback - 콜백입니다.
+ * @param delay - 지연(milliseconds) 시간입니다. (기본값 : 1)
+ * ******************************************************************************************************************/
+function nextTick(callback, delay) {
+    return setTimeout(callback, delay === undefined ? 1 : delay);
+}/********************************************************************************************************************
+ * UUID 생성하는 함수
+ * @param removeDash 하이픈 제거 여부
+ * @returns UUID
+ * ******************************************************************************************************************/
+function uuid(removeDash) {
+    var id = v4();
+    if (removeDash) {
+        return id.replace(/-/g, '');
+    }
+    else {
+        return id;
+    }
 }function isKoreanSingleCharacter(text) {
     var strGa = 44032; // 가
     var strHih = 55203; // 힣
@@ -453,70 +493,6 @@ function koreanAppendRul(text, addSpace) {
 function isContainsKorean(text) {
     var korean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
     return korean.test(text);
-}/********************************************************************************************************************
- * 숫자 또는 문자열로 주어진 숫자에 콤마 추가하는 함수
- * @param num - 숫자 또는 문자열
- * @returns 콤마 추가된 문자열
- * ******************************************************************************************************************/
-function numberFormat(num) {
-    var numValue = typeof num === 'number' ? num.toString() : num.replace(/^0+(?=\d)/, '');
-    var isInteger = /^\d+$/.test(numValue);
-    if (!isInteger && numValue.includes('.')) {
-        var _a = numValue.split('.'), integerPart = _a[0], decimalPart = _a[1];
-        var formattedIntegerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-        if (decimalPart) {
-            return "".concat(formattedIntegerPart, ".").concat(decimalPart.replace(/\.?0+$/, ''));
-        }
-        return formattedIntegerPart;
-    }
-    return numValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-}/********************************************************************************************************************
- * URL을 조합해서 반환
- * @param parts URL 조각
- * ******************************************************************************************************************/
-function urlJoin() {
-    var parts = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        parts[_i] = arguments[_i];
-    }
-    return parts.reduce(function (acc, part) {
-        if (acc === '') {
-            return part;
-        }
-        else if (part.startsWith('?')) {
-            return "".concat(acc).concat(part);
-        }
-        else if (acc.endsWith('/')) {
-            return "".concat(acc).concat(part.startsWith('/') ? part.substring(1) : part);
-        }
-        else {
-            return "".concat(acc).concat(part.startsWith('/') ? part : "/".concat(part));
-        }
-    });
-}/********************************************************************************************************************
- * 사업자 등록번호에 하이픈 추가하는 함수
- * @param companyNo 사업자등록번호
- * @returns 하이픈이 추가된 사업자등록번호
- * ******************************************************************************************************************/
-function companyNoAutoDash(companyNo) {
-    var str = companyNo.replace(/[^0-9*]/g, '');
-    var values = [str.slice(0, 3)];
-    if (str.length > 3)
-        values.push(str.slice(3, 5));
-    if (str.length > 5)
-        values.push(str.slice(5));
-    return values.join('-');
-}/********************************************************************************************************************
- * 주민등록번호에 하이픈 추가하는 함수
- * @param personalNo 주민등록번호
- * @returns 하이픈 추가된 주민등록번호
- * ******************************************************************************************************************/
-function personalNoAutoDash(personalNo) {
-    var str = personalNo.replace(/[^0-9*]/g, '');
-    var values = [str.slice(0, 6)];
-    if (str.length > 6)
-        values.push(str.slice(6));
-    return values.join('-');
 }/********************************************************************************************************************
  * 이름 마스킹
  * ******************************************************************************************************************/
@@ -586,6 +562,17 @@ function maskingCompanyNo(companyNo) {
     }
     return newCompanyNo;
 }/********************************************************************************************************************
+ * 주민등록번호에 하이픈 추가하는 함수
+ * @param personalNo 주민등록번호
+ * @returns 하이픈 추가된 주민등록번호
+ * ******************************************************************************************************************/
+function personalNoAutoDash(personalNo) {
+    var str = personalNo.replace(/[^0-9*]/g, '');
+    var values = [str.slice(0, 6)];
+    if (str.length > 6)
+        values.push(str.slice(6));
+    return values.join('-');
+}/********************************************************************************************************************
  * 주민등록번호 마스킹
  * ******************************************************************************************************************/
 function maskingPersonalNo(personalNo) {
@@ -639,6 +626,46 @@ function maskingBatch(data, names) {
         maskData('personalNo', maskingPersonalNo);
     return newData;
 }/********************************************************************************************************************
+ * 숫자 또는 문자열로 주어진 숫자에 콤마 추가하는 함수
+ * @param num - 숫자 또는 문자열
+ * @returns 콤마 추가된 문자열
+ * ******************************************************************************************************************/
+function numberFormat(num) {
+    var numValue = typeof num === 'number' ? num.toString() : num.replace(/^0+(?=\d)/, '');
+    var isInteger = /^\d+$/.test(numValue);
+    if (!isInteger && numValue.includes('.')) {
+        var _a = numValue.split('.'), integerPart = _a[0], decimalPart = _a[1];
+        var formattedIntegerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        if (decimalPart) {
+            return "".concat(formattedIntegerPart, ".").concat(decimalPart.replace(/\.?0+$/, ''));
+        }
+        return formattedIntegerPart;
+    }
+    return numValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}/********************************************************************************************************************
+ * URL을 조합해서 반환
+ * @param parts URL 조각
+ * ******************************************************************************************************************/
+function urlJoin() {
+    var parts = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        parts[_i] = arguments[_i];
+    }
+    return parts.reduce(function (acc, part) {
+        if (acc === '') {
+            return part;
+        }
+        else if (part.startsWith('?')) {
+            return "".concat(acc).concat(part);
+        }
+        else if (acc.endsWith('/')) {
+            return "".concat(acc).concat(part.startsWith('/') ? part.substring(1) : part);
+        }
+        else {
+            return "".concat(acc).concat(part.startsWith('/') ? part : "/".concat(part));
+        }
+    });
+}/********************************************************************************************************************
  * 버전을 비교할 수 있는 텍스트로 변경하는 함수
  * @param v 버전
  * @param vl 각 항목의 길이 (나머지는 0으로 채워짐) (v값이 1.2 일때, vl 값이 3=001.002, 4=0001.0002)
@@ -656,33 +683,6 @@ function versionString(v, vl, l) {
         }
     }
     return vsa.join('.');
-}/********************************************************************************************************************
- * base64 인코딩 함수
- * @param data 인코딩할 데이터
- * @returns base64 인코딩된 데이터
- * ******************************************************************************************************************/
-function base64Encode(data) {
-    return Buffer.from(data, 'utf8').toString('base64');
-}/********************************************************************************************************************
- * base64 디코딩 함수
- * @param encData 디코딩할 데이터
- * @returns base64 디코딩된 데이터
- * ******************************************************************************************************************/
-function base64Decode(encData) {
-    return Buffer.from(encData, 'base64').toString('utf8');
-}/********************************************************************************************************************
- * UUID 생성하는 함수
- * @param removeDash 하이픈 제거 여부
- * @returns UUID
- * ******************************************************************************************************************/
-function uuid(removeDash) {
-    var id = v4();
-    if (removeDash) {
-        return id.replace(/-/g, '');
-    }
-    else {
-        return id;
-    }
 }var base64 = {
     encode: base64Encode,
     decode: base64Decode,

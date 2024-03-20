@@ -1,4 +1,4 @@
-import numberFormat from '../src/methods/numberFormat';
+import { numberFormat } from '../src/methods/number';
 
 describe('util.number', () => {
   describe('format', () => {

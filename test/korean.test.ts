@@ -1,8 +1,4 @@
-import koreanRo from '../src/methods/koreanRo';
-import koreanAppendRo from '../src/methods/koreanAppendRo';
-import koreanRul from '../src/methods/koreanRul';
-import koreanAppendRul from '../src/methods/koreanAppendRul';
-import isContainsKorean from '../src/methods/isContainsKorean';
+import { koreanRo, koreanAppendRo, koreanRul, koreanAppendRul, isContainsKorean } from '../src/methods/korean';
 
 describe('ro', () => {
   it('should append 로/으로 to the given text', () => {

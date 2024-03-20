@@ -1,4 +1,4 @@
-import uuid from '../src/methods/uuid';
+import { uuid } from '../src/methods/id';
 
 describe('uuid', () => {
   it('should generate a uuid', () => {

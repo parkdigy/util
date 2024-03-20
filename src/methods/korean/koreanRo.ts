@@ -4,7 +4,7 @@
  * @returns 변환된 문자열
  * ******************************************************************************************************************/
 
-import empty from './empty';
+import empty from '../compare/empty';
 import isKoreanSingleCharacter from './isKoreanSingleCharacter';
 
 export function koreanRo(text?: string): string {

@@ -2,8 +2,8 @@
  * 전화번호 마스킹
  * ******************************************************************************************************************/
 
-import telNoAutoDash from './telNoAutoDash';
-import notEmpty from './notEmpty';
+import telNoAutoDash from '../telNo/telNoAutoDash';
+import notEmpty from '../compare/notEmpty';
 
 export function maskingTel(tel: string) {
   let newTel = tel;
