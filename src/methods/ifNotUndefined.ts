@@ -6,7 +6,7 @@
  * ******************************************************************************************************************/
 
 export function ifNotUndefined<TV, TNV>(v: TV, v2: TNV): TV | TNV {
-  return v === undefined ? v2 : v;
+  return v !== undefined ? v2 : v;
 }
 
 export default ifNotUndefined;
