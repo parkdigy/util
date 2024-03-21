@@ -92,6 +92,22 @@ function contains(list, value) {
     }
     return found;
 }/********************************************************************************************************************
+ * 값이 비어있는 경우 대체 값을 반환하는 함수
+ * @param v 확인할 값
+ * @param v2 대체 값
+ * @returns 최종 값
+ * ******************************************************************************************************************/
+function ifEmpty(v, v2) {
+    return empty(v) ? v2 : v;
+}/********************************************************************************************************************
+ * 값이 비어있지 않은 경우 대체 값을 반환하는 함수
+ * @param v 확인할 값
+ * @param v2 대체 값
+ * @returns 최종 값
+ * ******************************************************************************************************************/
+function ifNotEmpty(v, v2) {
+    return notEmpty(v) ? v2 : v;
+}/********************************************************************************************************************
  * 값이 null 인 경우 대체 값을 반환하는 함수
  * @param v 확인할 값
  * @param v2 대체 값
@@ -691,6 +707,8 @@ function versionString(v, vl, l) {
     notEmpty: notEmpty,
     equal: equal,
     contains: contains,
+    ifEmpty: ifEmpty,
+    ifNotEmpty: ifNotEmpty,
     ifNull: ifNull,
     ifNotNull: ifNotNull,
     ifUndefined: ifUndefined,
@@ -762,4 +780,4 @@ function versionString(v, vl, l) {
     telNo: telNo,
     companyNo: companyNo,
     personalNo: personalNo,
-};export{PdgUtil,base64Decode,base64Encode,beginTime,companyNoAutoDash,contains,copy,PdgUtil as default,empty,endTime,equal,extractDate,formatDate,ifNotNull,ifNotNullAndUndefined,ifNotUndefined,ifNull,ifNullOrUndefined,ifUndefined,isCompanyNo,isContainsKorean,isEmail,isKoreanSingleCharacter,isMobileNo,isNumericOnlyText,isPersonalNo,isTelNo,isUrl,koreanAppendRo,koreanAppendRul,koreanRo,koreanRul,lv,maskingBatch,maskingCompanyNo,maskingEmail,maskingName,maskingPersonalNo,maskingTel,nextTick,notEmpty,now,nowJs,nowTime,numberFormat,personalNoAutoDash,telNoAutoDash,urlJoin,uuid,versionString,vl,weekdayText};
+};export{PdgUtil,base64Decode,base64Encode,beginTime,companyNoAutoDash,contains,copy,PdgUtil as default,empty,endTime,equal,extractDate,formatDate,ifEmpty,ifNotEmpty,ifNotNull,ifNotNullAndUndefined,ifNotUndefined,ifNull,ifNullOrUndefined,ifUndefined,isCompanyNo,isContainsKorean,isEmail,isKoreanSingleCharacter,isMobileNo,isNumericOnlyText,isPersonalNo,isTelNo,isUrl,koreanAppendRo,koreanAppendRul,koreanRo,koreanRul,lv,maskingBatch,maskingCompanyNo,maskingEmail,maskingName,maskingPersonalNo,maskingTel,nextTick,notEmpty,now,nowJs,nowTime,numberFormat,personalNoAutoDash,telNoAutoDash,urlJoin,uuid,versionString,vl,weekdayText};

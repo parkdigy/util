@@ -8,6 +8,8 @@ export declare const PdgUtil: {
         notEmpty: typeof import("./methods").notEmpty;
         equal: typeof import("./methods").equal;
         contains: typeof import("./methods").contains;
+        ifEmpty: typeof import("./methods").ifEmpty;
+        ifNotEmpty: typeof import("./methods").ifNotEmpty;
         ifNull: typeof import("./methods").ifNull;
         ifNotNull: typeof import("./methods").ifNotNull;
         ifUndefined: typeof import("./methods").ifUndefined;

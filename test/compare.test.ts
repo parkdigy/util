@@ -3,6 +3,8 @@ import {
   notEmpty,
   equal,
   contains,
+  ifEmpty,
+  ifNotEmpty,
   ifNull,
   ifNotNull,
   ifUndefined,
@@ -77,6 +79,60 @@ describe('contains', () => {
   it('should return false if the list does not contain the value', () => {
     expect(contains([1, 2, 3], 4)).toBe(false);
     expect(contains(['a', 'b', 'c'], 'd')).toBe(false);
+  });
+});
+
+describe('ifEmpty', () => {
+  it('should return the replacement value when the original value is empty', () => {
+    const result = ifEmpty('', 'replacement');
+    expect(result).toBe('replacement');
+  });
+
+  it('should return the original value when the original value is not empty', () => {
+    const result = ifEmpty('original', 'replacement');
+    expect(result).toBe('original');
+  });
+
+  it('should handle non-string values', () => {
+    const result = ifEmpty(0, 'replacement');
+    expect(result).toBe(0);
+  });
+
+  it('should handle null values', () => {
+    const result = ifEmpty(null, 'replacement');
+    expect(result).toBe('replacement');
+  });
+
+  it('should handle undefined values', () => {
+    const result = ifEmpty(undefined, 'replacement');
+    expect(result).toBe('replacement');
+  });
+});
+
+describe('ifNotEmpty', () => {
+  it('should return the replacement value when the original value is not empty', () => {
+    const result = ifNotEmpty('original', 'replacement');
+    expect(result).toBe('replacement');
+  });
+
+  it('should return the original value when the original value is empty', () => {
+    const result = ifNotEmpty('', 'replacement');
+    expect(result).toBe('');
+  });
+
+  it('should handle non-string values', () => {
+    const result = ifNotEmpty(123, 'replacement');
+    expect(result).toBe('replacement');
+  });
+
+  it('should handle null values', () => {
+    const result = ifNotEmpty(null, 'replacement');
+    expect(result).toBe(null);
+  });
+
+  it('should handle undefined values', () => {
+    const result = ifNotEmpty(undefined, 'replacement');
+    expect(result).toBe(undefined);
   });
 });
 

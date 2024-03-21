@@ -92,6 +92,22 @@ function contains(list, value) {
     }
     return found;
 }/********************************************************************************************************************
+ * 값이 비어있는 경우 대체 값을 반환하는 함수
+ * @param v 확인할 값
+ * @param v2 대체 값
+ * @returns 최종 값
+ * ******************************************************************************************************************/
+function ifEmpty(v, v2) {
+    return empty(v) ? v2 : v;
+}/********************************************************************************************************************
+ * 값이 비어있지 않은 경우 대체 값을 반환하는 함수
+ * @param v 확인할 값
+ * @param v2 대체 값
+ * @returns 최종 값
+ * ******************************************************************************************************************/
+function ifNotEmpty(v, v2) {
+    return notEmpty(v) ? v2 : v;
+}/********************************************************************************************************************
  * 값이 null 인 경우 대체 값을 반환하는 함수
  * @param v 확인할 값
  * @param v2 대체 값
@@ -691,6 +707,8 @@ function versionString(v, vl, l) {
     notEmpty: notEmpty,
     equal: equal,
     contains: contains,
+    ifEmpty: ifEmpty,
+    ifNotEmpty: ifNotEmpty,
     ifNull: ifNull,
     ifNotNull: ifNotNull,
     ifUndefined: ifUndefined,
@@ -762,4 +780,4 @@ function versionString(v, vl, l) {
     telNo: telNo,
     companyNo: companyNo,
     personalNo: personalNo,
-};exports.PdgUtil=PdgUtil;exports.base64Decode=base64Decode;exports.base64Encode=base64Encode;exports.beginTime=beginTime;exports.companyNoAutoDash=companyNoAutoDash;exports.contains=contains;exports.copy=copy;exports.default=PdgUtil;exports.empty=empty;exports.endTime=endTime;exports.equal=equal;exports.extractDate=extractDate;exports.formatDate=formatDate;exports.ifNotNull=ifNotNull;exports.ifNotNullAndUndefined=ifNotNullAndUndefined;exports.ifNotUndefined=ifNotUndefined;exports.ifNull=ifNull;exports.ifNullOrUndefined=ifNullOrUndefined;exports.ifUndefined=ifUndefined;exports.isCompanyNo=isCompanyNo;exports.isContainsKorean=isContainsKorean;exports.isEmail=isEmail;exports.isKoreanSingleCharacter=isKoreanSingleCharacter;exports.isMobileNo=isMobileNo;exports.isNumericOnlyText=isNumericOnlyText;exports.isPersonalNo=isPersonalNo;exports.isTelNo=isTelNo;exports.isUrl=isUrl;exports.koreanAppendRo=koreanAppendRo;exports.koreanAppendRul=koreanAppendRul;exports.koreanRo=koreanRo;exports.koreanRul=koreanRul;exports.lv=lv;exports.maskingBatch=maskingBatch;exports.maskingCompanyNo=maskingCompanyNo;exports.maskingEmail=maskingEmail;exports.maskingName=maskingName;exports.maskingPersonalNo=maskingPersonalNo;exports.maskingTel=maskingTel;exports.nextTick=nextTick;exports.notEmpty=notEmpty;exports.now=now;exports.nowJs=nowJs;exports.nowTime=nowTime;exports.numberFormat=numberFormat;exports.personalNoAutoDash=personalNoAutoDash;exports.telNoAutoDash=telNoAutoDash;exports.urlJoin=urlJoin;exports.uuid=uuid;exports.versionString=versionString;exports.vl=vl;exports.weekdayText=weekdayText;
+};exports.PdgUtil=PdgUtil;exports.base64Decode=base64Decode;exports.base64Encode=base64Encode;exports.beginTime=beginTime;exports.companyNoAutoDash=companyNoAutoDash;exports.contains=contains;exports.copy=copy;exports.default=PdgUtil;exports.empty=empty;exports.endTime=endTime;exports.equal=equal;exports.extractDate=extractDate;exports.formatDate=formatDate;exports.ifEmpty=ifEmpty;exports.ifNotEmpty=ifNotEmpty;exports.ifNotNull=ifNotNull;exports.ifNotNullAndUndefined=ifNotNullAndUndefined;exports.ifNotUndefined=ifNotUndefined;exports.ifNull=ifNull;exports.ifNullOrUndefined=ifNullOrUndefined;exports.ifUndefined=ifUndefined;exports.isCompanyNo=isCompanyNo;exports.isContainsKorean=isContainsKorean;exports.isEmail=isEmail;exports.isKoreanSingleCharacter=isKoreanSingleCharacter;exports.isMobileNo=isMobileNo;exports.isNumericOnlyText=isNumericOnlyText;exports.isPersonalNo=isPersonalNo;exports.isTelNo=isTelNo;exports.isUrl=isUrl;exports.koreanAppendRo=koreanAppendRo;exports.koreanAppendRul=koreanAppendRul;exports.koreanRo=koreanRo;exports.koreanRul=koreanRul;exports.lv=lv;exports.maskingBatch=maskingBatch;exports.maskingCompanyNo=maskingCompanyNo;exports.maskingEmail=maskingEmail;exports.maskingName=maskingName;exports.maskingPersonalNo=maskingPersonalNo;exports.maskingTel=maskingTel;exports.nextTick=nextTick;exports.notEmpty=notEmpty;exports.now=now;exports.nowJs=nowJs;exports.nowTime=nowTime;exports.numberFormat=numberFormat;exports.personalNoAutoDash=personalNoAutoDash;exports.telNoAutoDash=telNoAutoDash;exports.urlJoin=urlJoin;exports.uuid=uuid;exports.versionString=versionString;exports.vl=vl;exports.weekdayText=weekdayText;

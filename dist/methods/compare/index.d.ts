@@ -2,6 +2,8 @@ export * from './empty';
 export * from './notEmpty';
 export * from './equal';
 export * from './contains';
+export * from './ifEmpty';
+export * from './ifNotEmpty';
 export * from './ifNull';
 export * from './ifNotNull';
 export * from './ifUndefined';
