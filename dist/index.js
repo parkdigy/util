@@ -15,10 +15,12 @@ function base64Decode(encData) {
 }/********************************************************************************************************************
  * 사업자 등록번호에 하이픈 추가하는 함수
  * @param companyNo 사업자등록번호
+ * @param allowCharacters 허용할 문자들 (기본값: '*')
  * @returns 하이픈이 추가된 사업자등록번호
  * ******************************************************************************************************************/
-function companyNoAutoDash(companyNo) {
-    var str = companyNo.replace(/[^0-9*]/g, '');
+function companyNoAutoDash(companyNo, allowCharacters) {
+    if (allowCharacters === void 0) { allowCharacters = '*'; }
+    var str = companyNo.replace(new RegExp("[^0-9".concat(allowCharacters, "]"), 'g'), '');
     var values = [str.slice(0, 3)];
     if (str.length > 3)
         values.push(str.slice(3, 5));
@@ -170,85 +172,12 @@ function isCompanyNo(v) {
 function isEmail(v) {
     return new RegExp(/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/, 'g').test(v);
 }/********************************************************************************************************************
- * 전화번호에 자동으로 하이픈 추가하는 함수
- * @param v 전화번호
- * @returns 하이픈 추가된 전화번호
- * ******************************************************************************************************************/
-function telNoAutoDash(v) {
-    if (v === undefined)
-        return undefined;
-    if (v === null)
-        return null;
-    var str = v.replace(/[^0-9*]/g, '');
-    var isLastDash = v.substring(v.length - 1, v.length) === '-';
-    if (str.substring(0, 1) !== '0' && !['15', '16', '18'].includes(str.substring(0, 2))) {
-        return v;
-    }
-    var tmp = '';
-    var preLen;
-    switch (str.substring(0, 2)) {
-        case '02':
-            preLen = 2;
-            break;
-        case '15':
-        case '16':
-        case '18':
-            preLen = 4;
-            break;
-        default:
-            preLen = 3;
-    }
-    if (['15', '16', '18'].includes(str.substring(0, 2))) {
-        if (str.length <= preLen) {
-            tmp = str;
-        }
-        else if (str.length <= preLen + 4) {
-            tmp += str.substring(0, preLen);
-            tmp += '-';
-            tmp += str.substring(preLen);
-        }
-        else {
-            tmp = str;
-        }
-    }
-    else if (str.length <= preLen) {
-        tmp = str;
-    }
-    else if (str.length <= preLen + 3) {
-        tmp += str.substring(0, preLen);
-        tmp += '-';
-        tmp += str.substring(preLen);
-    }
-    else if (str.length <= preLen + 7) {
-        tmp += str.substring(0, preLen);
-        tmp += '-';
-        tmp += str.substring(preLen, preLen + 3);
-        tmp += '-';
-        tmp += str.substring(preLen + 3);
-    }
-    else if (str.length <= preLen + 8) {
-        tmp += str.substring(0, preLen);
-        tmp += '-';
-        tmp += str.substring(preLen, preLen + 4);
-        tmp += '-';
-        tmp += str.substring(preLen + 4);
-    }
-    else {
-        tmp = str;
-    }
-    if (isLastDash) {
-        if (str.length === preLen) {
-            tmp += '-';
-        }
-    }
-    return tmp;
-}/********************************************************************************************************************
  * 휴대전화번호 형식인지 확인하는 함수
  * @param v 확인할 값
  * @returns 휴대전화번호 형식이면 true, 그렇지 않으면 false 반환
  * ******************************************************************************************************************/
 function isMobileNo(v) {
-    return /(^(01(?:0|1|[6-9]))([0-9]{3,4})([0-9]{4,4})$)|(^(01(?:0|1|[6-9]))-([0-9]{3,4})-([0-9]{4,4})$)|(^\+(?:[-]?[0-9]){8,}$)/.test(telNoAutoDash(v));
+    return /(^(01(?:0|1|[6-9]))([0-9]{3,4})([0-9]{4,4})$)|(^(01(?:0|1|[6-9]))-([0-9]{3,4})-([0-9]{4,4})$)|(^\+(?:[-]?[0-9]){8,}$)/.test(v);
 }/********************************************************************************************************************
  * 문자열에 숫자만 포함되어 있는지 확인하는 함수
  * @param v 확인할 값
@@ -269,7 +198,7 @@ function isPersonalNo(v) {
  * @returns 전화번호 형식이면 true, 그렇지 않으면 false 반환
  * ******************************************************************************************************************/
 function isTelNo(v) {
-    return /(^([0-9]{2,3})([0-9]{3,4})([0-9]{4})$)|(^([0-9]{2,3})-([0-9]{3,4})-([0-9]{4})$)|(^([0-9]{4})-([0-9]{4})$)|(^\+(?:[-]?[0-9]){8,}$)/.test(telNoAutoDash(v));
+    return /(^([0-9]{2,3})([0-9]{3,4})([0-9]{4})$)|(^([0-9]{2,3})-([0-9]{3,4})-([0-9]{4})$)|(^([0-9]{4})-([0-9]{4})$)|(^\+(?:[-]?[0-9]){8,}$)/.test(v);
 }/********************************************************************************************************************
  * URL 형식인지 확인하는 함수
  * @param v 확인할 값
@@ -539,6 +468,81 @@ function maskingEmail(email) {
     }
     return newEmail;
 }/********************************************************************************************************************
+ * 전화번호에 자동으로 하이픈 추가하는 함수
+ * @param v 전화번호
+ * @param allowCharacters 허용할 문자들 (기본값: '*')
+ * @returns 하이픈 추가된 전화번호
+ * ******************************************************************************************************************/
+function telNoAutoDash(v, allowCharacters) {
+    if (allowCharacters === void 0) { allowCharacters = '*'; }
+    if (v === undefined)
+        return undefined;
+    if (v === null)
+        return null;
+    var str = v.replace(new RegExp("[^0-9".concat(allowCharacters, "]"), 'g'), '');
+    var isLastDash = v.substring(v.length - 1, v.length) === '-';
+    if (str.substring(0, 1) !== '0' && !['15', '16', '18'].includes(str.substring(0, 2))) {
+        return str;
+    }
+    var tmp = '';
+    var preLen;
+    switch (str.substring(0, 2)) {
+        case '02':
+            preLen = 2;
+            break;
+        case '15':
+        case '16':
+        case '18':
+            preLen = 4;
+            break;
+        default:
+            preLen = 3;
+    }
+    if (['15', '16', '18'].includes(str.substring(0, 2))) {
+        if (str.length <= preLen) {
+            tmp = str;
+        }
+        else if (str.length <= preLen + 4) {
+            tmp += str.substring(0, preLen);
+            tmp += '-';
+            tmp += str.substring(preLen);
+        }
+        else {
+            tmp = str;
+        }
+    }
+    else if (str.length <= preLen) {
+        tmp = str;
+    }
+    else if (str.length <= preLen + 3) {
+        tmp += str.substring(0, preLen);
+        tmp += '-';
+        tmp += str.substring(preLen);
+    }
+    else if (str.length <= preLen + 7) {
+        tmp += str.substring(0, preLen);
+        tmp += '-';
+        tmp += str.substring(preLen, preLen + 3);
+        tmp += '-';
+        tmp += str.substring(preLen + 3);
+    }
+    else if (str.length <= preLen + 8) {
+        tmp += str.substring(0, preLen);
+        tmp += '-';
+        tmp += str.substring(preLen, preLen + 4);
+        tmp += '-';
+        tmp += str.substring(preLen + 4);
+    }
+    else {
+        tmp = str;
+    }
+    if (isLastDash) {
+        if (str.length === preLen) {
+            tmp += '-';
+        }
+    }
+    return tmp;
+}/********************************************************************************************************************
  * 전화번호 마스킹
  * ******************************************************************************************************************/
 function maskingTel(tel) {
@@ -580,10 +584,12 @@ function maskingCompanyNo(companyNo) {
 }/********************************************************************************************************************
  * 주민등록번호에 하이픈 추가하는 함수
  * @param personalNo 주민등록번호
+ * @param allowCharacters 허용할 문자들 (기본값: '*')
  * @returns 하이픈 추가된 주민등록번호
  * ******************************************************************************************************************/
-function personalNoAutoDash(personalNo) {
-    var str = personalNo.replace(/[^0-9*]/g, '');
+function personalNoAutoDash(personalNo, allowCharacters) {
+    if (allowCharacters === void 0) { allowCharacters = '*'; }
+    var str = personalNo.replace(new RegExp("[^0-9".concat(allowCharacters, "]"), 'g'), '');
     var values = [str.slice(0, 6)];
     if (str.length > 6)
         values.push(str.slice(6));

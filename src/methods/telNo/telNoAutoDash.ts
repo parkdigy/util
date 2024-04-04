@@ -1,21 +1,22 @@
 /********************************************************************************************************************
  * 전화번호에 자동으로 하이픈 추가하는 함수
  * @param v 전화번호
+ * @param allowCharacters 허용할 문자들 (기본값: '*')
  * @returns 하이픈 추가된 전화번호
  * ******************************************************************************************************************/
 
 export function telNoAutoDash<
   T extends string | null | undefined,
   RT = T extends null ? null : T extends undefined ? undefined : string,
->(v: T): RT {
+>(v: T, allowCharacters = '*'): RT {
   if (v === undefined) return undefined as RT;
   if (v === null) return null as RT;
 
-  const str = v.replace(/[^0-9*]/g, '');
+  const str = v.replace(new RegExp(`[^0-9${allowCharacters}]`, 'g'), '');
   const isLastDash = v.substring(v.length - 1, v.length) === '-';
 
   if (str.substring(0, 1) !== '0' && !['15', '16', '18'].includes(str.substring(0, 2))) {
-    return v as RT;
+    return str as RT;
   }
 
   let tmp = '';

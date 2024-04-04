@@ -1,7 +1,7 @@
 {
   "name": "@pdg/util",
   "title": "UTIL Module",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "API Module",
   "type": "module",
   "types": "dist/index.d.ts",
@@ -23,7 +23,7 @@
   "scripts": {
     "dev": "cd examples && npm run dev",
     "build": "npm run test && npm run lint && rollup -c --bundleConfigAsCjs",
-    "publish": "npm publish --access=public",
+    "pub": "npm i && npm run build && npm publish --access=public && rm ./.git/hooks/pre-commit",
     "lint": "eslint './src/**/*.ts'",
     "reinstall-module": "rm -rf node_modules && rm -f package-lock.json && npm i",
     "test": "jest"
