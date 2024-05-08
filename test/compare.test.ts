@@ -3,6 +3,7 @@ import {
   notEmpty,
   equal,
   contains,
+  notContains,
   ifEmpty,
   ifNotEmpty,
   ifNull,
@@ -11,6 +12,8 @@ import {
   ifNotUndefined,
   ifNullOrUndefined,
   ifNotNullAndUndefined,
+  ifContains,
+  ifNotContains,
   isEmail,
   isUrl,
   isTelNo,
@@ -79,6 +82,43 @@ describe('contains', () => {
   it('should return false if the list does not contain the value', () => {
     expect(contains([1, 2, 3], 4)).toBe(false);
     expect(contains(['a', 'b', 'c'], 'd')).toBe(false);
+  });
+});
+
+describe('notContains', () => {
+  it('returns true when the value is not found in the array', () => {
+    const result = notContains([1, 2, 3], 4);
+    expect(result).toBe(true);
+  });
+
+  it('returns false when the value is found in the array', () => {
+    const result = notContains([1, 2, 3], 2);
+    expect(result).toBe(false);
+  });
+
+  it('works with string arrays', () => {
+    const result = notContains(['apple', 'banana', 'cherry'], 'pear');
+    expect(result).toBe(true);
+  });
+
+  it('returns true with empty arrays', () => {
+    const result = notContains([], 'banana');
+    expect(result).toBe(true);
+  });
+
+  it('works with arrays of objects', () => {
+    const obj1 = { name: 'John' };
+    const obj2 = { name: 'Jane' };
+    const obj3 = { name: 'Doe' };
+    const result = notContains([obj1, obj2], obj3);
+    expect(result).toBe(true);
+  });
+
+  it('returns false when the object is found in the array', () => {
+    const obj1 = { name: 'John' };
+    const obj2 = { name: 'Jane' };
+    const result = notContains([obj1, obj2], obj1);
+    expect(result).toBe(false);
   });
 });
 
@@ -235,6 +275,65 @@ describe('ifNotNullAndUndefined', () => {
   it('should handle non-string values', () => {
     const result = ifNotNullAndUndefined(123, 'replacement');
     expect(result).toBe('replacement');
+  });
+});
+
+describe('ifContains', () => {
+  it('returns the replacement value when the value is found in the array', () => {
+    const result = ifContains([1, 2, 3], 2, 'found');
+    expect(result).toBe('found');
+  });
+
+  it('returns the original value when the value is not found in the array', () => {
+    const result = ifContains([1, 2, 3], 4, 'not found');
+    expect(result).toBe(4);
+  });
+
+  it('works with string arrays', () => {
+    const result = ifContains(['apple', 'banana', 'cherry'], 'banana', 'fruit');
+    expect(result).toBe('fruit');
+  });
+
+  it('works with empty arrays', () => {
+    const result = ifContains([], 'banana', 'not found');
+    expect(result).toBe('banana');
+  });
+
+  it('works with arrays of objects', () => {
+    const obj1 = { name: 'John' };
+    const obj2 = { name: 'Jane' };
+    const result = ifContains([obj1, obj2], obj1, 'found');
+    expect(result).toBe('found');
+  });
+});
+
+describe('ifNotContains', () => {
+  it('returns the replacement value when the value is not found in the array', () => {
+    const result = ifNotContains([1, 2, 3], 4, 'not found');
+    expect(result).toBe('not found');
+  });
+
+  it('returns the original value when the value is found in the array', () => {
+    const result = ifNotContains([1, 2, 3], 2, 'found');
+    expect(result).toBe(2);
+  });
+
+  it('works with string arrays', () => {
+    const result = ifNotContains(['apple', 'banana', 'cherry'], 'pear', 'fruit');
+    expect(result).toBe('fruit');
+  });
+
+  it('returns the original value with empty arrays', () => {
+    const result = ifNotContains([], 'banana', 'not found');
+    expect(result).toBe('not found');
+  });
+
+  it('works with arrays of objects', () => {
+    const obj1 = { name: 'John' };
+    const obj2 = { name: 'Jane' };
+    const obj3 = { name: 'Doe' };
+    const result = ifNotContains([obj1, obj2], obj3, 'not found');
+    expect(result).toBe('not found');
   });
 });
 

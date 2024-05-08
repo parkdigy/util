@@ -78,7 +78,7 @@ function equal(v1, v2) {
         return v1 === v2;
     }
 }/********************************************************************************************************************
- * 배열이나 문자열에 특정 값이 포함되어 있는지 확인하는 함수
+ * 배열에 특정 값이 포함되어 있는지 여부를 반환하는 함수
  * @param list 확인할 배열 또는 문자열
  * @param value 확인할 값
  * @returns 포함 여부
@@ -93,6 +93,22 @@ function contains(list, value) {
         }
     }
     return found;
+}/********************************************************************************************************************
+ * 배열에 특정 값이 포함되어 있지 않은지 여부를 반환하는 함수
+ * @param list 확인할 배열 또는 문자열
+ * @param value 확인할 값
+ * @returns 미포함 여부
+ * ******************************************************************************************************************/
+function notContains(list, value) {
+    var found = false;
+    for (var _i = 0, list_1 = list; _i < list_1.length; _i++) {
+        var v = list_1[_i];
+        if (v === value) {
+            found = true;
+            break;
+        }
+    }
+    return !found;
 }/********************************************************************************************************************
  * 값이 비어있는 경우 대체 값을 반환하는 함수
  * @param v 확인할 값
@@ -157,6 +173,24 @@ function ifNullOrUndefined(v, v2) {
  * ******************************************************************************************************************/
 function ifNotNullAndUndefined(v, v2) {
     return v != null ? v2 : v;
+}/********************************************************************************************************************
+ * 값이 포함되어 있는 경우 대체 값을 반환하는 함수
+ * @param list 확인할 배열 또는 문자열
+ * @param v 확인할 값
+ * @param v2 대체 값
+ * @returns 최종 값
+ * ******************************************************************************************************************/
+function ifContains(list, v, v2) {
+    return contains(list, v) ? v2 : v;
+}/********************************************************************************************************************
+ * 값이 포함되어 있지 않은 경우 대체 값을 반환하는 함수
+ * @param list 확인할 배열 또는 문자열
+ * @param v 확인할 값
+ * @param v2 대체 값
+ * @returns 최종 값
+ * ******************************************************************************************************************/
+function ifNotContains(list, v, v2) {
+    return notContains(list, v) ? v2 : v;
 }/********************************************************************************************************************
  * 사업자번호 형식인지 확인하는 함수
  * @param v 확인할 값
@@ -786,4 +820,4 @@ function versionString(v, vl, l) {
     telNo: telNo,
     companyNo: companyNo,
     personalNo: personalNo,
-};export{PdgUtil,base64Decode,base64Encode,beginTime,companyNoAutoDash,contains,copy,PdgUtil as default,empty,endTime,equal,extractDate,formatDate,ifEmpty,ifNotEmpty,ifNotNull,ifNotNullAndUndefined,ifNotUndefined,ifNull,ifNullOrUndefined,ifUndefined,isCompanyNo,isContainsKorean,isEmail,isKoreanSingleCharacter,isMobileNo,isNumericOnlyText,isPersonalNo,isTelNo,isUrl,koreanAppendRo,koreanAppendRul,koreanRo,koreanRul,lv,maskingBatch,maskingCompanyNo,maskingEmail,maskingName,maskingPersonalNo,maskingTel,nextTick,notEmpty,now,nowJs,nowTime,numberFormat,personalNoAutoDash,telNoAutoDash,urlJoin,uuid,versionString,vl,weekdayText};
+};export{PdgUtil,base64Decode,base64Encode,beginTime,companyNoAutoDash,contains,copy,PdgUtil as default,empty,endTime,equal,extractDate,formatDate,ifContains,ifEmpty,ifNotContains,ifNotEmpty,ifNotNull,ifNotNullAndUndefined,ifNotUndefined,ifNull,ifNullOrUndefined,ifUndefined,isCompanyNo,isContainsKorean,isEmail,isKoreanSingleCharacter,isMobileNo,isNumericOnlyText,isPersonalNo,isTelNo,isUrl,koreanAppendRo,koreanAppendRul,koreanRo,koreanRul,lv,maskingBatch,maskingCompanyNo,maskingEmail,maskingName,maskingPersonalNo,maskingTel,nextTick,notContains,notEmpty,now,nowJs,nowTime,numberFormat,personalNoAutoDash,telNoAutoDash,urlJoin,uuid,versionString,vl,weekdayText};
