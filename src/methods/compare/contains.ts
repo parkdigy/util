@@ -5,12 +5,9 @@
  * @returns 포함 여부
  * ******************************************************************************************************************/
 
-type Value = any;
+type Value = string | number | boolean | null | undefined | bigint | object;
 
-export function contains<T extends Value>(
-  list: ReadonlyArray<T>,
-  value: Value
-): value is T {
+export function contains<T extends Value>(list: ReadonlyArray<T>, value: Value): value is T {
   let found = false;
   for (const v of list) {
     if (v === value) {

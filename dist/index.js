@@ -94,22 +94,6 @@ function contains(list, value) {
     }
     return found;
 }/********************************************************************************************************************
- * 배열에 특정 값이 포함되어 있지 않은지 여부를 반환하는 함수
- * @param list 확인할 배열 또는 문자열
- * @param value 확인할 값
- * @returns 미포함 여부
- * ******************************************************************************************************************/
-function notContains(list, value) {
-    var found = false;
-    for (var _i = 0, list_1 = list; _i < list_1.length; _i++) {
-        var v = list_1[_i];
-        if (v === value) {
-            found = true;
-            break;
-        }
-    }
-    return !found;
-}/********************************************************************************************************************
  * 값이 비어있는 경우 대체 값을 반환하는 함수
  * @param v 확인할 값
  * @param v2 대체 값
@@ -173,24 +157,6 @@ function ifNullOrUndefined(v, v2) {
  * ******************************************************************************************************************/
 function ifNotNullAndUndefined(v, v2) {
     return v != null ? v2 : v;
-}/********************************************************************************************************************
- * 값이 포함되어 있는 경우 대체 값을 반환하는 함수
- * @param list 확인할 배열 또는 문자열
- * @param v 확인할 값
- * @param v2 대체 값
- * @returns 최종 값
- * ******************************************************************************************************************/
-function ifContains(list, v, v2) {
-    return contains(list, v) ? v2 : v;
-}/********************************************************************************************************************
- * 값이 포함되어 있지 않은 경우 대체 값을 반환하는 함수
- * @param list 확인할 배열 또는 문자열
- * @param v 확인할 값
- * @param v2 대체 값
- * @returns 최종 값
- * ******************************************************************************************************************/
-function ifNotContains(list, v, v2) {
-    return notContains(list, v) ? v2 : v;
 }/********************************************************************************************************************
  * 사업자번호 형식인지 확인하는 함수
  * @param v 확인할 값
@@ -820,4 +786,4 @@ function versionString(v, vl, l) {
     telNo: telNo,
     companyNo: companyNo,
     personalNo: personalNo,
-};exports.PdgUtil=PdgUtil;exports.base64Decode=base64Decode;exports.base64Encode=base64Encode;exports.beginTime=beginTime;exports.companyNoAutoDash=companyNoAutoDash;exports.contains=contains;exports.copy=copy;exports.default=PdgUtil;exports.empty=empty;exports.endTime=endTime;exports.equal=equal;exports.extractDate=extractDate;exports.formatDate=formatDate;exports.ifContains=ifContains;exports.ifEmpty=ifEmpty;exports.ifNotContains=ifNotContains;exports.ifNotEmpty=ifNotEmpty;exports.ifNotNull=ifNotNull;exports.ifNotNullAndUndefined=ifNotNullAndUndefined;exports.ifNotUndefined=ifNotUndefined;exports.ifNull=ifNull;exports.ifNullOrUndefined=ifNullOrUndefined;exports.ifUndefined=ifUndefined;exports.isCompanyNo=isCompanyNo;exports.isContainsKorean=isContainsKorean;exports.isEmail=isEmail;exports.isKoreanSingleCharacter=isKoreanSingleCharacter;exports.isMobileNo=isMobileNo;exports.isNumericOnlyText=isNumericOnlyText;exports.isPersonalNo=isPersonalNo;exports.isTelNo=isTelNo;exports.isUrl=isUrl;exports.koreanAppendRo=koreanAppendRo;exports.koreanAppendRul=koreanAppendRul;exports.koreanRo=koreanRo;exports.koreanRul=koreanRul;exports.lv=lv;exports.maskingBatch=maskingBatch;exports.maskingCompanyNo=maskingCompanyNo;exports.maskingEmail=maskingEmail;exports.maskingName=maskingName;exports.maskingPersonalNo=maskingPersonalNo;exports.maskingTel=maskingTel;exports.nextTick=nextTick;exports.notContains=notContains;exports.notEmpty=notEmpty;exports.now=now;exports.nowJs=nowJs;exports.nowTime=nowTime;exports.numberFormat=numberFormat;exports.personalNoAutoDash=personalNoAutoDash;exports.telNoAutoDash=telNoAutoDash;exports.urlJoin=urlJoin;exports.uuid=uuid;exports.versionString=versionString;exports.vl=vl;exports.weekdayText=weekdayText;
+};exports.PdgUtil=PdgUtil;exports.base64Decode=base64Decode;exports.base64Encode=base64Encode;exports.beginTime=beginTime;exports.companyNoAutoDash=companyNoAutoDash;exports.contains=contains;exports.copy=copy;exports.default=PdgUtil;exports.empty=empty;exports.endTime=endTime;exports.equal=equal;exports.extractDate=extractDate;exports.formatDate=formatDate;exports.ifEmpty=ifEmpty;exports.ifNotEmpty=ifNotEmpty;exports.ifNotNull=ifNotNull;exports.ifNotNullAndUndefined=ifNotNullAndUndefined;exports.ifNotUndefined=ifNotUndefined;exports.ifNull=ifNull;exports.ifNullOrUndefined=ifNullOrUndefined;exports.ifUndefined=ifUndefined;exports.isCompanyNo=isCompanyNo;exports.isContainsKorean=isContainsKorean;exports.isEmail=isEmail;exports.isKoreanSingleCharacter=isKoreanSingleCharacter;exports.isMobileNo=isMobileNo;exports.isNumericOnlyText=isNumericOnlyText;exports.isPersonalNo=isPersonalNo;exports.isTelNo=isTelNo;exports.isUrl=isUrl;exports.koreanAppendRo=koreanAppendRo;exports.koreanAppendRul=koreanAppendRul;exports.koreanRo=koreanRo;exports.koreanRul=koreanRul;exports.lv=lv;exports.maskingBatch=maskingBatch;exports.maskingCompanyNo=maskingCompanyNo;exports.maskingEmail=maskingEmail;exports.maskingName=maskingName;exports.maskingPersonalNo=maskingPersonalNo;exports.maskingTel=maskingTel;exports.nextTick=nextTick;exports.notEmpty=notEmpty;exports.now=now;exports.nowJs=nowJs;exports.nowTime=nowTime;exports.numberFormat=numberFormat;exports.personalNoAutoDash=personalNoAutoDash;exports.telNoAutoDash=telNoAutoDash;exports.urlJoin=urlJoin;exports.uuid=uuid;exports.versionString=versionString;exports.vl=vl;exports.weekdayText=weekdayText;

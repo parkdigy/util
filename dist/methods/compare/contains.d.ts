@@ -4,6 +4,6 @@
  * @param value 확인할 값
  * @returns 포함 여부
  * ******************************************************************************************************************/
-type Value = any;
+type Value = string | number | boolean | null | undefined | bigint | object;
 export declare function contains<T extends Value>(list: ReadonlyArray<T>, value: Value): value is T;
 export default contains;
