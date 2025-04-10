@@ -14,11 +14,14 @@ export default defineConfig([
         sourceType: 'module',
       },
       globals: {
+        NodeJS: 'readonly',
         Buffer: 'readonly',
         setTimeout: 'readonly',
         clearTimeout: 'readonly',
         setImmediate: 'readonly',
-        NodeJS: 'readonly',
+        setInterval: 'readonly',
+        clearInterval: 'readonly',
+        globalThis: 'readonly',
       },
     },
     plugins: {
