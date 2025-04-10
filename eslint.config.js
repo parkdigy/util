@@ -10,24 +10,16 @@ export default defineConfig([
     languageOptions: {
       parser: tsParser,
       parserOptions: {
+        project: './tsconfig.json',
         ecmaVersion: 'latest',
         sourceType: 'module',
-      },
-      globals: {
-        NodeJS: 'readonly',
-        Buffer: 'readonly',
-        setTimeout: 'readonly',
-        clearTimeout: 'readonly',
-        setImmediate: 'readonly',
-        setInterval: 'readonly',
-        clearInterval: 'readonly',
-        globalThis: 'readonly',
       },
     },
     plugins: {
       '@typescript-eslint': tsPlugin,
     },
     rules: {
+      'no-undef': 'off',
       'no-unused-vars': 'off',
       'no-redeclare': 'off',
       '@typescript-eslint/no-unused-expressions': 'off',
