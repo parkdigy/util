@@ -10,7 +10,6 @@ export default defineConfig([
     languageOptions: {
       parser: tsParser,
       parserOptions: {
-        project: './tsconfig.json',
         ecmaVersion: 'latest',
         sourceType: 'module',
       },
