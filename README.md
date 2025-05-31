@@ -4,5 +4,5 @@
 
 ## 설치
 ```
-npm install -D @pdg/util @types/uuid uuid dayjs
+npm install -D @pdg/util
 ```
