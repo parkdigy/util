@@ -8,7 +8,7 @@
 import maskingName from './maskingName';
 import maskingEmail from './maskingEmail';
 import maskingTel from './maskingTel';
-import maskingCompanyNo from './maskingCompanyNo';
+import maskingBusinessNo from './maskingBusinessNo';
 import maskingPersonalNo from './maskingPersonalNo';
 
 export function maskingBatch<T extends { [k: string]: any }>(
@@ -21,7 +21,7 @@ export function maskingBatch<T extends { [k: string]: any }>(
     // 전화번호
     tel?: keyof T | (keyof T)[];
     // 사업자등록번호
-    companyNo?: keyof T | (keyof T)[];
+    businessNo?: keyof T | (keyof T)[];
     // 주민등록번호
     personalNo?: keyof T | (keyof T)[];
   }
@@ -47,7 +47,7 @@ export function maskingBatch<T extends { [k: string]: any }>(
   if (names.name) maskData('name', maskingName);
   if (names.email) maskData('email', maskingEmail);
   if (names.tel) maskData('tel', maskingTel);
-  if (names.companyNo) maskData('companyNo', maskingCompanyNo);
+  if (names.businessNo) maskData('businessNo', maskingBusinessNo);
   if (names.personalNo) maskData('personalNo', maskingPersonalNo);
 
   return newData;

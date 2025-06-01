@@ -1,11 +1,11 @@
-import { maskingBatch, maskingName, maskingEmail, maskingTel, maskingCompanyNo, maskingPersonalNo } from './methods';
+import { maskingBatch, maskingName, maskingEmail, maskingTel, maskingBusinessNo, maskingPersonalNo } from './methods';
 
 export const masking = {
   batch: maskingBatch,
   name: maskingName,
   email: maskingEmail,
   tel: maskingTel,
-  companyNo: maskingCompanyNo,
+  businessNo: maskingBusinessNo,
   personalNo: maskingPersonalNo,
 };
 

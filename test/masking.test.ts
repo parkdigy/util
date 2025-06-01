@@ -4,7 +4,7 @@ import {
   maskingTel,
   maskingEmail,
   maskingPersonalNo,
-  maskingCompanyNo,
+  maskingBusinessNo,
 } from '../src/methods/masking';
 
 describe('Masking', () => {
@@ -17,17 +17,17 @@ describe('Masking', () => {
             email: 'test@example.com',
             tel: '02-1234-5678',
             mobile: '010-1234-5678',
-            companyNo: '123-45-67890',
+            businessNo: '123-45-67890',
             personalNo: '123456-1234567',
           },
-          { name: 'name', email: 'email', tel: ['tel', 'mobile'], companyNo: 'companyNo', personalNo: 'personalNo' }
+          { name: 'name', email: 'email', tel: ['tel', 'mobile'], businessNo: 'businessNo', personalNo: 'personalNo' }
         )
       ).toEqual({
         name: '김*수',
         email: 'te**@example.com',
         tel: '02-****-5678',
         mobile: '010-****-5678',
-        companyNo: '123-45-*****',
+        businessNo: '123-45-*****',
         personalNo: '123456-*******',
       });
     });
@@ -60,10 +60,10 @@ describe('Masking', () => {
     });
   });
 
-  describe('companyNo', () => {
+  describe('businessNo', () => {
     it('사업자등록번호 마스킹', () => {
-      expect(maskingCompanyNo('1234567890')).toBe('12345*****');
-      expect(maskingCompanyNo('123-45-67890')).toBe('123-45-*****');
+      expect(maskingBusinessNo('1234567890')).toBe('12345*****');
+      expect(maskingBusinessNo('123-45-67890')).toBe('123-45-*****');
     });
   });
 

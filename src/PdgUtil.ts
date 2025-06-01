@@ -8,7 +8,7 @@ import korean from './korean';
 import number from './number';
 import telNo from './telNo';
 import url from './url';
-import companyNo from './companyNo';
+import businessNo from './businessNo';
 import personalNo from './personalNo';
 import masking from './masking';
 import version from './version';
@@ -26,7 +26,7 @@ export const PdgUtil = {
   masking,
   version,
   telNo,
-  companyNo,
+  businessNo,
   personalNo,
 };
 

@@ -3,22 +3,22 @@
  * ******************************************************************************************************************/
 
 import notEmpty from '../compare/notEmpty';
-import companyNoAutoDash from '../companyNo/companyNoAutoDash';
+import businessNoAutoDash from '../businessNo/businessNoAutoDash';
 
-export function maskingCompanyNo(companyNo: string) {
-  let newCompanyNo = companyNo;
-  if (notEmpty(companyNo)) {
-    const autoDash = companyNo.includes('-');
-    const newCompanyNos = companyNoAutoDash(companyNo).split('-');
-    if (companyNo.length > 2) {
+export function maskingBusinessNo(businessNo: string) {
+  let newCompanyNo = businessNo;
+  if (notEmpty(businessNo)) {
+    const autoDash = businessNo.includes('-');
+    const newCompanyNos = businessNoAutoDash(businessNo).split('-');
+    if (businessNo.length > 2) {
       newCompanyNos[2] = '*'.repeat(newCompanyNos[2].length);
     }
     newCompanyNo = newCompanyNos.join('');
     if (autoDash) {
-      newCompanyNo = companyNoAutoDash(newCompanyNo);
+      newCompanyNo = businessNoAutoDash(newCompanyNo);
     }
   }
   return newCompanyNo;
 }
 
-export default maskingCompanyNo;
+export default maskingBusinessNo;

@@ -4,16 +4,13 @@
 
 import dayjs, { Dayjs } from 'dayjs';
 
-export function endTime(): Date;
-export function endTime<T extends Date | Dayjs>(dt: T): T;
-export function endTime<T extends Date | Dayjs>(dt: T, millisecond: number): T;
-export function endTime(dt?: Date | Dayjs, millisecond = 0) {
-  if (dt === undefined || dt instanceof Date) {
-    const newDt = dt ? new Date(dt) : new Date();
-    newDt.setHours(23, 59, 59, millisecond);
-    return newDt;
+export function endTime<T extends Date | Dayjs | undefined>(dt?: T): T extends undefined ? Date : T;
+export function endTime(dt: string, format?: string): Date;
+export function endTime(dt?: Date | Dayjs | string, format?: string) {
+  if (dt === undefined || dt instanceof Date || typeof dt === 'string') {
+    return dayjs(dt, format).endOf('day').toDate();
   } else {
-    return dayjs(dt).set('hour', 23).set('minutes', 59).set('second', 59).set('millisecond', millisecond);
+    return dayjs(dt).endOf('day');
   }
 }
 

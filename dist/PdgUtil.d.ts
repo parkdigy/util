@@ -64,7 +64,7 @@ export declare const PdgUtil: {
         name: typeof import("./methods").maskingName;
         email: typeof import("./methods").maskingEmail;
         tel: typeof import("./methods").maskingTel;
-        companyNo: typeof import("./methods").maskingCompanyNo;
+        businessNo: typeof import("./methods").maskingBusinessNo;
         personalNo: typeof import("./methods").maskingPersonalNo;
     };
     version: {
@@ -73,8 +73,8 @@ export declare const PdgUtil: {
     telNo: {
         autoDash: typeof import("./methods").telNoAutoDash;
     };
-    companyNo: {
-        autoDash: typeof import("./methods").companyNoAutoDash;
+    businessNo: {
+        autoDash: typeof import("./methods").businessNoAutoDash;
     };
     personalNo: {
         autoDash: typeof import("./methods").personalNoAutoDash;

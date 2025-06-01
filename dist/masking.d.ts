@@ -1,10 +1,10 @@
-import { maskingBatch, maskingName, maskingEmail, maskingTel, maskingCompanyNo, maskingPersonalNo } from './methods';
+import { maskingBatch, maskingName, maskingEmail, maskingTel, maskingBusinessNo, maskingPersonalNo } from './methods';
 export declare const masking: {
     batch: typeof maskingBatch;
     name: typeof maskingName;
     email: typeof maskingEmail;
     tel: typeof maskingTel;
-    companyNo: typeof maskingCompanyNo;
+    businessNo: typeof maskingBusinessNo;
     personalNo: typeof maskingPersonalNo;
 };
 export default masking;

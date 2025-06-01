@@ -14,13 +14,13 @@ function base64Decode(encData) {
     return Buffer.from(encData, 'base64').toString('utf8');
 }/********************************************************************************************************************
  * 사업자 등록번호에 하이픈 추가하는 함수
- * @param companyNo 사업자등록번호
+ * @param businessNo 사업자등록번호
  * @param allowCharacters 허용할 문자들 (기본값: '*')
  * @returns 하이픈이 추가된 사업자등록번호
  * ******************************************************************************************************************/
-function companyNoAutoDash(companyNo, allowCharacters) {
+function businessNoAutoDash(businessNo, allowCharacters) {
     if (allowCharacters === void 0) { allowCharacters = '*'; }
-    var str = companyNo.replace(new RegExp("[^0-9".concat(allowCharacters, "]"), 'g'), '');
+    var str = businessNo.replace(new RegExp("[^0-9".concat(allowCharacters, "]"), 'g'), '');
     var values = [str.slice(0, 3)];
     if (str.length > 3)
         values.push(str.slice(3, 5));
@@ -286,27 +286,22 @@ function nowTime() {
 }/********************************************************************************************************************
  * 날짜의 시간을 00:00:00.0 으로 변경해서 반환
  * ******************************************************************************************************************/
-function beginTime(dt) {
-    if (dt === undefined || dt instanceof Date) {
-        var newDt = dt ? new Date(dt) : new Date();
-        newDt.setHours(0, 0, 0, 0);
-        return newDt;
+function beginTime(dt, format) {
+    if (dt === undefined || dt instanceof Date || typeof dt === 'string') {
+        return dayjs(dt, format).startOf('day').toDate();
     }
     else {
-        return dayjs(dt).set('hour', 0).set('minutes', 0).set('second', 0).set('millisecond', 0);
+        return dayjs(dt).startOf('day');
     }
 }/********************************************************************************************************************
  * 날짜의 시간을 23:59:59 로 변경해서 반환
  * ******************************************************************************************************************/
-function endTime(dt, millisecond) {
-    if (millisecond === void 0) { millisecond = 0; }
-    if (dt === undefined || dt instanceof Date) {
-        var newDt = dt ? new Date(dt) : new Date();
-        newDt.setHours(23, 59, 59, millisecond);
-        return newDt;
+function endTime(dt, format) {
+    if (dt === undefined || dt instanceof Date || typeof dt === 'string') {
+        return dayjs(dt, format).endOf('day').toDate();
     }
     else {
-        return dayjs(dt).set('hour', 23).set('minutes', 59).set('second', 59).set('millisecond', millisecond);
+        return dayjs(dt).endOf('day');
     }
 }/********************************************************************************************************************
  * 날짜를 주어진 형식의 텍스트로 변환
@@ -567,17 +562,17 @@ function maskingTel(tel) {
 }/********************************************************************************************************************
  * 사업자등록번호 마스킹
  * ******************************************************************************************************************/
-function maskingCompanyNo(companyNo) {
-    var newCompanyNo = companyNo;
-    if (notEmpty(companyNo)) {
-        var autoDash = companyNo.includes('-');
-        var newCompanyNos = companyNoAutoDash(companyNo).split('-');
-        if (companyNo.length > 2) {
+function maskingBusinessNo(businessNo) {
+    var newCompanyNo = businessNo;
+    if (notEmpty(businessNo)) {
+        var autoDash = businessNo.includes('-');
+        var newCompanyNos = businessNoAutoDash(businessNo).split('-');
+        if (businessNo.length > 2) {
             newCompanyNos[2] = '*'.repeat(newCompanyNos[2].length);
         }
         newCompanyNo = newCompanyNos.join('');
         if (autoDash) {
-            newCompanyNo = companyNoAutoDash(newCompanyNo);
+            newCompanyNo = businessNoAutoDash(newCompanyNo);
         }
     }
     return newCompanyNo;
@@ -642,8 +637,8 @@ function maskingBatch(data, names) {
         maskData('email', maskingEmail);
     if (names.tel)
         maskData('tel', maskingTel);
-    if (names.companyNo)
-        maskData('companyNo', maskingCompanyNo);
+    if (names.businessNo)
+        maskData('businessNo', maskingBusinessNo);
     if (names.personalNo)
         maskData('personalNo', maskingPersonalNo);
     return newData;
@@ -758,8 +753,8 @@ function versionString(v, vl, l) {
     autoDash: telNoAutoDash,
 };var url = {
     join: urlJoin,
-};var companyNo = {
-    autoDash: companyNoAutoDash,
+};var businessNo = {
+    autoDash: businessNoAutoDash,
 };var personalNo = {
     autoDash: personalNoAutoDash,
 };var masking = {
@@ -767,7 +762,7 @@ function versionString(v, vl, l) {
     name: maskingName,
     email: maskingEmail,
     tel: maskingTel,
-    companyNo: maskingCompanyNo,
+    businessNo: maskingBusinessNo,
     personalNo: maskingPersonalNo,
 };var version = {
     toString: versionString,
@@ -784,6 +779,6 @@ function versionString(v, vl, l) {
     masking: masking,
     version: version,
     telNo: telNo,
-    companyNo: companyNo,
+    businessNo: businessNo,
     personalNo: personalNo,
-};export{PdgUtil,base64Decode,base64Encode,beginTime,companyNoAutoDash,contains,copy,PdgUtil as default,empty,endTime,equal,extractDate,formatDate,ifEmpty,ifNotEmpty,ifNotNull,ifNotNullAndUndefined,ifNotUndefined,ifNull,ifNullOrUndefined,ifUndefined,isCompanyNo,isContainsKorean,isEmail,isKoreanSingleCharacter,isMobileNo,isNumericOnlyText,isPersonalNo,isTelNo,isUrl,koreanAppendRo,koreanAppendRul,koreanRo,koreanRul,lv,maskingBatch,maskingCompanyNo,maskingEmail,maskingName,maskingPersonalNo,maskingTel,nextTick,notEmpty,now,nowJs,nowTime,numberFormat,personalNoAutoDash,telNoAutoDash,urlJoin,uuid,versionString,vl,weekdayText};
+};export{PdgUtil,base64Decode,base64Encode,beginTime,businessNoAutoDash,contains,copy,PdgUtil as default,empty,endTime,equal,extractDate,formatDate,ifEmpty,ifNotEmpty,ifNotNull,ifNotNullAndUndefined,ifNotUndefined,ifNull,ifNullOrUndefined,ifUndefined,isCompanyNo,isContainsKorean,isEmail,isKoreanSingleCharacter,isMobileNo,isNumericOnlyText,isPersonalNo,isTelNo,isUrl,koreanAppendRo,koreanAppendRul,koreanRo,koreanRul,lv,maskingBatch,maskingBusinessNo,maskingEmail,maskingName,maskingPersonalNo,maskingTel,nextTick,notEmpty,now,nowJs,nowTime,numberFormat,personalNoAutoDash,telNoAutoDash,urlJoin,uuid,versionString,vl,weekdayText};

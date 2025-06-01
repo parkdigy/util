@@ -1,5 +1,5 @@
 export * from './base64';
-export * from './companyNo';
+export * from './businessNo';
 export * from './compare';
 export * from './data';
 export * from './date';

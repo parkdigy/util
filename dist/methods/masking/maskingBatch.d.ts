@@ -10,7 +10,7 @@ export declare function maskingBatch<T extends {
     name?: keyof T | (keyof T)[];
     email?: keyof T | (keyof T)[];
     tel?: keyof T | (keyof T)[];
-    companyNo?: keyof T | (keyof T)[];
+    businessNo?: keyof T | (keyof T)[];
     personalNo?: keyof T | (keyof T)[];
 }): T;
 export default maskingBatch;

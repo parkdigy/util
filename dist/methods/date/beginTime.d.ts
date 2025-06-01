@@ -4,4 +4,5 @@
 import { Dayjs } from 'dayjs';
 export declare function beginTime(): Date;
 export declare function beginTime<T extends Date | Dayjs>(dt: T): T;
+export declare function beginTime(dt: string, format?: string): Date;
 export default beginTime;

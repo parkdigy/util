@@ -1,5 +1,5 @@
 /********************************************************************************************************************
  * 사업자등록번호 마스킹
  * ******************************************************************************************************************/
-export declare function maskingCompanyNo(companyNo: string): string;
-export default maskingCompanyNo;
+export declare function maskingBusinessNo(businessNo: string): string;
+export default maskingBusinessNo;

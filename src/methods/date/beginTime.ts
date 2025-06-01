@@ -6,13 +6,12 @@ import dayjs, { Dayjs } from 'dayjs';
 
 export function beginTime(): Date;
 export function beginTime<T extends Date | Dayjs>(dt: T): T;
-export function beginTime(dt?: Date | Dayjs) {
-  if (dt === undefined || dt instanceof Date) {
-    const newDt = dt ? new Date(dt) : new Date();
-    newDt.setHours(0, 0, 0, 0);
-    return newDt;
+export function beginTime(dt: string, format?: string): Date;
+export function beginTime(dt?: Date | Dayjs | string, format?: string) {
+  if (dt === undefined || dt instanceof Date || typeof dt === 'string') {
+    return dayjs(dt, format).startOf('day').toDate();
   } else {
-    return dayjs(dt).set('hour', 0).set('minutes', 0).set('second', 0).set('millisecond', 0);
+    return dayjs(dt).startOf('day');
   }
 }
 
