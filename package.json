@@ -59,7 +59,6 @@
     "rollup-plugin-delete": "^2.2.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-typescript2": "^0.36.0",
-    "sass": "^1.86.3",
     "ts-jest": "^29.3.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
